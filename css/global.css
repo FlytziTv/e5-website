@@ -1,0 +1,400 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap");
+
+:root {
+  /* 01 — Couleurs */
+  --color-primary: #5b21b6; /* Violet — boutons principaux, liens, barres de progression */
+  --color-primary-hover: #4c1d95; /* Violet foncé — survol */
+  --color-accent: #d9f24b; /* Citron — réussite, badges, un seul CTA par écran */
+  --color-ink: #14121f; /* Encre — titres, texte fort, blocs sombres, pied de page */
+  --color-lavender: #f3f0fa; /* Lavande — sections alternées, champs, zones média */
+  --color-white: #ffffff; /* Blanc — fond par défaut, cartes, séparateurs */
+  --color-surface: #f7f4fc; /* Surface — zones de contenu, cartes, séparateurs */
+  --color-border: #e7e1f5; /* Bordure */
+  --color-text-secondary: #4b5563;
+  --color-text-on-dark: #9c93b8;
+
+  /* 02 — Typographie */
+  --font-family: "Space Grotesk", sans-serif;
+  --fs-h1: 60px;
+  --lh-h1: 700;
+  --ls-h1: -3.5%;
+  --fs-h2: 34px;
+  --ls-h2: -3%;
+  --fs-h3: 19px;
+  --ls-h3: -2%;
+  --fs-body: 16px;
+  --lh-body: 1.6;
+  --fs-label: 13px;
+
+  /* 03 — Espacement (échelle) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 20px;
+  --space-5: 32px;
+  --space-6: 48px;
+  --space-7: 72px;
+
+  /* Rayons */
+  --radius-pill: 999px; /* boutons, champs */
+  --radius-card: 18px; /* cartes, médias */
+  --radius-block: 24px; /* grands blocs */
+
+  /* Grille */
+  --grid-max-width: 1280px;
+  --grid-margin: 40px;
+  --grid-columns: 12;
+  --grid-gutter: 20px;
+}
+
+/* ==========================================================================
+   Reset minimal
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--fs-body);
+  padding: var(--space-4);
+  font-weight: 400;
+  line-height: var(--lh-body);
+  color: var(--color-ink);
+  background-color: var(--color-surface);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+img,
+video {
+  max-width: 100%;
+  display: block;
+}
+
+/* Médias — toujours 16:9, rayon 18px, sans bordure */
+.media-16-9 {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-card);
+  border: none;
+  box-shadow: none;
+}
+
+/* ==========================================================================
+   02 — Typographie
+   ========================================================================== */
+
+h1,
+.h1 {
+  font-family: var(--font-family);
+  font-size: var(--fs-h1);
+  font-weight: 700;
+  letter-spacing: var(--ls-h1);
+  line-height: 1.05;
+  margin: 0 0 var(--space-4);
+  color: var(--color-ink);
+}
+
+h2,
+.h2 {
+  font-family: var(--font-family);
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  letter-spacing: var(--ls-h2);
+  line-height: 1.15;
+  margin: 0 0 var(--space-3);
+  color: var(--color-ink);
+}
+
+h3,
+.h3 {
+  font-family: var(--font-family);
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  letter-spacing: var(--ls-h3);
+  line-height: 1.2;
+  margin: 0 0 var(--space-2);
+  color: var(--color-ink);
+}
+
+p,
+.body-text {
+  font-size: var(--fs-body);
+  font-weight: 400;
+  line-height: var(--lh-body);
+  color: var(--color-ink);
+  margin: 0 0 var(--space-3);
+}
+
+.text-secondary {
+  color: var(--color-text-secondary);
+}
+
+.text-on-dark {
+  color: var(--color-text-on-dark);
+}
+
+.label,
+.eyebrow {
+  font-size: var(--fs-label);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-secondary);
+}
+
+/* ==========================================================================
+   03 — Grille
+   ========================================================================== */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), 1fr);
+  gap: var(--grid-gutter);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--grid-gutter);
+}
+
+/* Sections alternées : blanc / lavande. Noir réservé au rappel final / footer */
+.section {
+  padding-block: var(--space-6);
+  background-color: var(--color-white);
+}
+
+.section--alt {
+  background-color: var(--color-lavender);
+}
+
+.section--dark {
+  background-color: var(--color-ink);
+  color: var(--color-white);
+}
+
+.section--dark h1,
+.section--dark h2,
+.section--dark h3 {
+  color: var(--color-white);
+}
+
+.section--dark p {
+  color: var(--color-text-on-dark);
+}
+
+/* ==========================================================================
+   04 — Composants de base
+   ========================================================================== */
+
+/* Boutons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-family);
+  font-size: var(--fs-body);
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+  box-shadow: none;
+}
+
+/* Principal — violet */
+.btn--primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+.btn--primary:hover {
+  background-color: var(--color-primary-hover);
+}
+
+/* Accent — citron, un seul par écran, texte foncé obligatoire */
+.btn--accent {
+  background-color: var(--color-accent);
+  color: var(--color-ink);
+}
+.btn--accent:hover {
+  background-color: #cbe33f;
+}
+
+/* Secondaire */
+.btn--secondary {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-border);
+}
+.btn--secondary:hover {
+  background-color: var(--color-lavender);
+}
+
+/* Inactif */
+.btn--disabled,
+.btn:disabled {
+  background-color: var(--color-lavender);
+  color: var(--color-text-on-dark);
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+/* Champs et filtres */
+.input,
+.select,
+textarea {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 var(--space-4);
+  font-family: var(--font-family);
+  font-size: var(--fs-body);
+  color: var(--color-ink);
+  background-color: var(--color-lavender);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+}
+
+textarea {
+  padding-block: var(--space-3);
+  border-radius: var(--radius-card);
+}
+
+.input::placeholder {
+  color: var(--color-text-secondary);
+}
+
+.input:focus,
+.select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+/* Filtres (pills toggle) */
+.filter-group {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.filter-pill {
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-white);
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.filter-pill.is-active {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+/* Badges et états */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.badge--en-cours {
+  background-color: var(--color-lavender);
+  color: var(--color-primary);
+}
+
+.badge--termine {
+  background-color: var(--color-accent);
+  color: var(--color-ink);
+}
+
+.badge--a-venir {
+  background-color: var(--color-white);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+}
+
+.badge--direct {
+  background-color: var(--color-ink);
+  color: var(--color-white);
+}
+
+/* Barre de progression */
+.progress {
+  width: 100%;
+  height: 8px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-lavender);
+  overflow: hidden;
+}
+
+.progress__fill {
+  height: 100%;
+  background-color: var(--color-primary);
+  border-radius: var(--radius-pill);
+}
+
+/* Carte de cours */
+.card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: var(--space-4);
+  box-shadow: none;
+}
+
+.card__eyebrow {
+  font-size: var(--fs-label);
+  font-weight: 500;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: var(--space-1);
+}
+
+.card__title {
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  letter-spacing: var(--ls-h3);
+  margin: 0 0 var(--space-2);
+}
+
+.card__meta {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* Grands blocs (rayon 24px) */
+.block {
+  border-radius: var(--radius-block);
+  padding: var(--space-5);
+}
