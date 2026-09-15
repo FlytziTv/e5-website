@@ -37,8 +37,8 @@
 
   /* Rayons */
   --radius-pill: 999px; /* boutons, champs */
-  --radius-card: 18px; /* cartes, médias */
-  --radius-block: 24px; /* grands blocs */
+  --radius-card: 14px; /* cartes, médias */
+  --radius-block: 14px; /* grands blocs */
 
   /* Grille */
   --grid-max-width: 1280px;
