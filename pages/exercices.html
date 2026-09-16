@@ -7,6 +7,7 @@
     <title>E5 Website</title>
     <link rel="stylesheet" href="../css/global.css" />
     <link rel="stylesheet" href="../css/layout.css" />
+    <link rel="stylesheet" href="../css/exercices.css" />
   </head>
 
   <body>
@@ -59,7 +60,7 @@
 
       <!-- // -- MAIN CONTENT -- \\ -->
       <main class="main-content">
-        <!-- <! // -- TITRE ET DESCRIPTION -- > -->
+        <!-- TITRE ET DESCRIPTION -->
         <div class="main-content-header">
           <h1>Les exercices</h1>
           <p>
@@ -70,8 +71,120 @@
           </p>
         </div>
 
-        <div></div>
-        <div></div>
+        <div class="exercices">
+          <div class="language-choice">
+            <button class="language-button" data-language="Algo">Algo</button>
+            <button class="language-button" data-language="C">C</button>
+            <button class="language-button" data-language="Java">Java</button>
+            <button class="language-button" data-language="JavaScript">
+              JavaScript
+            </button>
+            <button class="language-button" data-language="PHP">PHP</button>
+          </div>
+
+          <div class="exos-content">
+            <div class="exo-enonce">
+              <p class="num-exo">Ex01</p>
+              <p class="nom-exo">lorem ipsum dolor sit amet</p>
+              <p class="desc-exo">lorem ipsum dolor sit amet</p>
+              <div class="exo-attendu">
+                <p>Attendu</p>
+                <div>
+                  <p>Resultat : lorem ipsum dolor sit amet</p>
+                </div>
+              </div>
+            </div>
+            <!-- // -- EO EXOS ENONCE -- \\ -->
+            <div class="exo-code">
+              <div class="exo-code-header">
+                <p>Ex01.php</p>
+                <button class="exo-code-button">Executer</button>
+              </div>
+              <span class="exo-line"></span>
+              <div class="exo-code-content">
+                <p>
+                  ALGORITHME Rectangle <br />
+                  VARIABLES lg, lr, s, p : RÉEL <br />
+                  DÉBUT LIRE lg <br />
+                  LIRE lr <br />
+                  s ← lg * lr <br />
+                  p ← 2 * (lg + lr) <br />
+                  AFFICHER "La surface est de : ", s <br />
+                  AFFICHER "Le périmètre est de : ", p <br />
+                  FIN
+                </p>
+              </div>
+              <span class="exo-line"></span>
+              <div class="exo-code-sortie">
+                <p class="exo-code-sortie-title">Sortie</p>
+                <p class="exo-code-sortie-content">La surface est de : 20</p>
+              </div>
+            </div>
+            <!-- // -- EO EXOS CODE -- \\ -->
+          </div>
+          <!-- EO EXOS CONTENT -- \\ -->
+
+          <div>
+            <ul class="list-exercices">
+              <li>
+                <div class="list-exercices-item">
+                  <div>
+                    <p class="num-exo-list">Ex01</p>
+                    <p class="nom-exo-list">
+                      Surface et périmètre d'un rectangle
+                    </p>
+                  </div>
+                  <p>4 languages</p>
+                </div>
+              </li>
+              <li>
+                <div class="list-exercices-item">
+                  <div>
+                    <p class="num-exo-list">Ex01</p>
+                    <p class="nom-exo-list">
+                      Surface et périmètre d'un rectangle
+                    </p>
+                  </div>
+                  <p>4 languages</p>
+                </div>
+              </li>
+              <li>
+                <div class="list-exercices-item">
+                  <div>
+                    <p class="num-exo-list">Ex02</p>
+                    <p class="nom-exo-list">
+                      Surface et périmètre d'un rectangle
+                    </p>
+                  </div>
+                  <p>4 languages</p>
+                </div>
+              </li>
+              <li>
+                <div class="list-exercices-item">
+                  <div>
+                    <p class="num-exo-list">Ex03</p>
+                    <p class="nom-exo-list">
+                      Surface et périmètre d'un rectangle
+                    </p>
+                  </div>
+                  <p>4 languages</p>
+                </div>
+              </li>
+              <li>
+                <div class="list-exercices-item">
+                  <div>
+                    <p class="num-exo-list">Ex04</p>
+                    <p class="nom-exo-list">
+                      Surface et périmètre d'un rectangle
+                    </p>
+                  </div>
+                  <p>4 languages</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <!-- // -- EO LISTE EXERCICES -- \\ -->
+        </div>
       </main>
     </div>
 
