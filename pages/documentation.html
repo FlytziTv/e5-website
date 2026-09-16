@@ -3,11 +3,89 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Site E5 - Documentations" />
-    <title>E5 Website - Documentations</title>
-    <link rel="stylesheet" href="css/global.css" />
+    <meta name="description" content="Site E5" />
+    <title>E5 Website</title>
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/layout.css" />
   </head>
   <body>
+    <header class="navbar">
+      <div class="navbarBrand">
+        <img
+          src="../images/icons/ynov-icons.svg"
+          alt="Logo Ynov"
+          width="90"
+          height="30"
+        />
+      </div>
+
+      <p class="title-navbar">E-enseignement</p>
+    </header>
+
+    <div class="container">
+      <aside class="sidebar">
+        <p class="sidebarLabel">Navigation</p>
+
+        <nav class="nav-list">
+          <a href="../pages/accueil.html" class="nav-item">
+            <i data-lucide="house" class="nav-item-icon"></i>
+            <span>Accueil</span>
+          </a>
+
+          <a href="../pages/cours.html" class="nav-item">
+            <i data-lucide="square-library" class="nav-item-icon"></i>
+            <span>Cours</span>
+          </a>
+
+          <a href="../pages/exercices.html" class="nav-item">
+            <i data-lucide="drafting-compass" class="nav-item-icon"></i>
+            <span>Exercices</span>
+          </a>
+
+          <a href="../pages/documentation.html" class="nav-item nav-item-active">
+            <i data-lucide="book-open-text" class="nav-item-icon"></i>
+            <span>Documentation</span>
+          </a>
+
+          <a href="../pages/contact.html" class="nav-item">
+            <i data-lucide="contact-round" class="nav-item-icon"></i>
+            <span>Contact</span>
+          </a>
+        </nav>
+      </aside>
+
+      <main class="main-content"></main>
+    </div>
+
+    <footer class="footer">
+      <p class="footerAddress">12 rue Anatole France, 92000 Nanterre</p>
+
+      <a href="#" class="footerSocial" aria-label="Instagram">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round">
+          
+          <rect x="2.5" y="2.5" width="19" height="19" rx="5" />
+          <circle cx="12" cy="12" r="4.2" />
+          <circle
+            cx="17.4"
+            cy="6.6"
+            r="0.6"
+            fill="currentColor"
+            stroke="none"
+          />
+        </svg>
+      </a>
+    </footer>
+
     <script src="js/script.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      lucide.createIcons();
+    </script>
   </body>
 </html>
