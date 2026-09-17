@@ -16,7 +16,7 @@ const exercices = {
     numero: "01",
     nom: "Surface et périmètre d'un rectangle",
     enonce:
-      "Lire la longueur et la largeur d'un rectangle, calculer sa surface et son périmètre, afficher les deux résultats. Attention à convertir la saisie en nombre avant de calculer.",
+      "Lire la longueur et la largeur d'un rectangle, calculer sa surface (<code>lg * lr</code>) et son périmètre (<code>2 * (lg + lr)</code>), afficher les deux résultats. Attention à convertir la saisie en nombre avant de calculer.",
     attendu: `
       La surface est de : 15
       Le périmètre est de : 16
@@ -110,7 +110,7 @@ const exercices = {
     numero: "02",
     nom: "Équation du premier degré",
     enonce:
-      "Résoudre l'équation a·x + b = 0. Lire les coefficients a et b, puis afficher la solution. Gérer les deux cas particuliers : si a et b sont nuls, l'ensemble des solutions est ℝ ; si a est nul et b ne l'est pas, il est vide. Ne jamais diviser avant d'avoir testé a.",
+      "Résoudre l'équation <code>a·x + b = 0</code>. Lire les coefficients <code>a</code> et <code>b</code>, puis afficher la solution. Gérer les deux cas particuliers : si <code>a</code> et <code>b</code> sont nuls, l'ensemble des solutions est <code>ℝ</code> ; si <code>a</code> est nul et <code>b</code> ne l'est pas, il est vide. Ne jamais diviser avant d'avoir testé <code>a</code>.",
     attendu: `
       La solution est de : 3
     `,
@@ -229,7 +229,7 @@ const exercices = {
     numero: "03",
     nom: "Diviseurs d'un nombre",
     enonce:
-      "Lire un entier positif et afficher tous ses diviseurs. Un entier div divise nb si le reste de la division entière est nul. Aucun diviseur n'étant inférieur à 1 ni supérieur à nb, il suffit de parcourir cet intervalle.",
+      "Lire un entier positif et afficher tous ses diviseurs. Un entier <code>div</code> divise <code>nb</code> si le reste de la division entière est nul (<code>nb % div == 0</code>). Aucun diviseur n'étant inférieur à <code>1</code> ni supérieur à <code>nb</code>, il suffit de parcourir cet intervalle.",
     attendu: `
       Le diviseur est : 1
       Le diviseur est : 2
@@ -379,7 +379,9 @@ const exerciceSelectionne = exercices[numeroExercice];
 document.querySelector(".num-exo").textContent =
   "Ex" + exerciceSelectionne.numero;
 document.querySelector(".nom-exo").textContent = exerciceSelectionne.nom;
-document.querySelector(".desc-exo").textContent = exerciceSelectionne.enonce;
+// innerHTML (et non textContent) : l'énoncé contient des balises <code> à interpréter.
+// Sans risque ici, le texte vient de nos données et pas de l'utilisateur.
+document.querySelector(".desc-exo").innerHTML = exerciceSelectionne.enonce;
 document.querySelector(".exo-attendu .attendu-exo").textContent = nettoyerTexte(
   exerciceSelectionne.attendu,
 );

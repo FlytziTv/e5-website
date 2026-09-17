@@ -10,6 +10,12 @@
     <title>Cours — E-enseignement</title>
     <link rel="stylesheet" href="../css/global.css" />
     <link rel="stylesheet" href="../css/layout.css" />
+    <!-- Thème de couleurs pour le code (highlight.js), comme sur la page exercices -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/atom-one-dark.min.css"
+    />
+    <!-- Styles propres à cette page, en dernier pour pouvoir modifier le thème -->
     <link rel="stylesheet" href="../css/cours.css" />
   </head>
   <body>
@@ -115,7 +121,7 @@
               <label class="cours-ligne" for="cours-1">
                 <span class="cours-numero">1</span>
                 <span class="cours-titre">Le squelette d'un programme</span>
-                <span class="cours-etat">Terminé</span>
+                <span class="cours-etat">En cours</span>
               </label>
             </li>
 
@@ -123,7 +129,7 @@
               <label class="cours-ligne" for="cours-2">
                 <span class="cours-numero">2</span>
                 <span class="cours-titre">Variables et types</span>
-                <span class="cours-etat">Terminé</span>
+                <span class="cours-etat">En cours</span>
               </label>
             </li>
 
@@ -131,15 +137,15 @@
               <label class="cours-ligne" for="cours-3">
                 <span class="cours-numero">3</span>
                 <span class="cours-titre">Entrées et sorties</span>
-                <span class="cours-etat">Terminé</span>
+                <span class="cours-etat">En cours</span>
               </label>
             </li>
 
             <li>
               <label class="cours-ligne" for="cours-4">
-                <span class="cours-numero cours-numero--en-cours">4</span>
+                <span class="cours-numero">4</span>
                 <span class="cours-titre">Les opérateurs</span>
-                <span class="cours-etat cours-etat--en-cours">En cours</span>
+                <span class="cours-etat">En cours</span>
               </label>
             </li>
 
@@ -147,7 +153,7 @@
               <label class="cours-ligne" for="cours-5">
                 <span class="cours-numero">5</span>
                 <span class="cours-titre">Les structures conditionnelles</span>
-                <span class="cours-etat">Terminé</span>
+                <span class="cours-etat">En cours</span>
               </label>
             </li>
 
@@ -155,7 +161,7 @@
               <label class="cours-ligne" for="cours-6">
                 <span class="cours-numero">6</span>
                 <span class="cours-titre">Les boucles</span>
-                <span class="cours-etat">Terminé</span>
+                <span class="cours-etat">En cours</span>
               </label>
             </li>
 
@@ -163,7 +169,7 @@
               <label class="cours-ligne" for="cours-7">
                 <span class="cours-numero">7</span>
                 <span class="cours-titre">Récapitulatif des syntaxes</span>
-                <span class="cours-etat">Terminé</span>
+                <span class="cours-etat">En cours</span>
               </label>
             </li>
           </ul>
@@ -176,7 +182,7 @@
                 <p>Chaque langage a son point d'entrée. <strong>C</strong> : compilé en binaire, tout part de <code>main()</code>, bibliothèques via <code>#include</code>. <strong>Java</strong> : compilé en bytecode exécuté par la JVM, tout vit dans une classe et démarre par <code>main</code>. <strong>JavaScript</strong> : interprété <strong>côté client</strong>, dans le navigateur — visible et modifiable par l'utilisateur. <strong>PHP</strong> : interprété <strong>côté serveur</strong> entre <code>&lt;?php ?&gt;</code> — le navigateur ne reçoit que le HTML produit. Cette distinction client/serveur est la première chose à retenir.</p>
 
                 <div class="cours-codes">
-<pre class="cours-code"><code>// C — compilé, point d'entrée main()
+<pre class="cours-code"><code class="language-c">// C — compilé, point d'entrée main()
 #include &lt;stdio.h&gt;
 
 int main() {
@@ -190,7 +196,7 @@ public class Programme {
         // instructions
     }
 }</code></pre>
-<pre class="cours-code"><code>&lt;!-- JavaScript — côté client --&gt;
+<pre class="cours-code"><code class="language-php-template">&lt;!-- JavaScript — côté client --&gt;
 &lt;script&gt;
   // instructions
 &lt;/script&gt;
@@ -210,12 +216,12 @@ public class Programme {
                 <p>Une variable est un emplacement nommé en mémoire. <strong>C et Java</strong> : typage statique, le type est déclaré et ne change jamais (<code>int</code>, <code>float</code>/<code>double</code>, <code>char</code>, plus <code>String</code> et <code>boolean</code> en Java). <strong>JS et PHP</strong> : typage dynamique, le type est déduit de la valeur. Piège permanent : toute saisie utilisateur arrive en <strong>chaîne de caractères</strong>, donc <code>"5" + "3"</code> donne <code>"53"</code>. Il faut convertir explicitement.</p>
 
                 <div class="cours-codes">
-<pre class="cours-code"><code>// C                          // Java
+<pre class="cours-code"><code class="language-c">// C                          // Java
 int nb = 10;                  int nb = 10;
 float surface = 15.5;         double surface = 15.5;
 char lettre = 'A';            String nom = "Stacy";
                               final double PI = 3.14;</code></pre>
-<pre class="cours-code"><code>// JS — let / const          // PHP — préfixe $
+<pre class="cours-code"><code class="language-php">// JS — let / const          // PHP — préfixe $
 let nb = 10;                 $nb = 10;
 const PI = 3.14;             $pi = 3.14;
 
@@ -231,7 +237,7 @@ let x = parseFloat(saisie);  $x = floatval($saisie);  // conversion</code></pre>
                 <p>Lire et afficher dépend du contexte d'exécution. <strong>C</strong> : <code>scanf</code> / <code>printf</code>, pilotés par formats (<code>%d</code> entier, <code>%f</code> réel) et <code>&amp;</code> devant la variable lue. <strong>Java</strong> : un objet <code>Scanner</code> sur <code>System.in</code> pour lire, <code>System.out.println()</code> pour afficher. <strong>JS</strong> : <code>prompt()</code> renvoie du texte, sortie via <code>alert()</code>, <code>document.write()</code> ou <code>console.log()</code>. <strong>PHP</strong> : pas de saisie directe — les données viennent d'un formulaire HTML, récupérées dans <code>$_POST</code> et validées par <code>isset()</code> avant traitement.</p>
 
                 <div class="cours-codes">
-<pre class="cours-code"><code>// C — formats et esperluette
+<pre class="cours-code"><code class="language-c">// C — formats et esperluette
 int nb;
 printf("Donnez un nombre : ");
 scanf("%d", &amp;nb);
@@ -244,7 +250,7 @@ Scanner sc = new Scanner(System.in);
 System.out.print("Donnez un nombre : ");
 int nb = sc.nextInt();          // nextDouble() / nextLine()
 System.out.println("Saisi : " + nb);</code></pre>
-<pre class="cours-code"><code>// JS — prompt renvoie du texte
+<pre class="cours-code"><code class="language-php-template">// JS — prompt renvoie du texte
 let nb = parseInt(prompt("Donnez un nombre :"));
 alert("Saisi : " + nb);
 
@@ -269,13 +275,13 @@ alert("Saisi : " + nb);
                 <p>Arithmétique identique partout, parenthèses pour lever toute ambiguïté. Deux pièges : la division par zéro, à toujours tester avant, et la division entière en <strong>C et Java</strong> (<code>7 / 2</code> vaut <code>3</code>). Le <strong>modulo</strong> <code>%</code> donne le reste : c'est l'outil de la divisibilité et de la parité. Ne jamais confondre <code>=</code> (affecte) et <code>==</code> (compare) ; <code>===</code> compare aussi le type en JS et PHP, et en Java on compare les chaînes avec <code>.equals()</code>, jamais avec <code>==</code>. Concaténation : <code>+</code> en C-like et JS, <code>.</code> en PHP.</p>
 
                 <div class="cours-codes">
-<pre class="cours-code"><code>Arithmétique   +   -   *   /   %(modulo)
+<pre class="cours-code"><code class="language-plaintext">Arithmétique   +   -   *   /   %(modulo)
 Comparaison    ==   !=   &lt;   &gt;   &lt;=   &gt;=
 Identité       ===  !==        (JS et PHP)
 Chaînes        .equals()       (Java)
 Logique        &amp;&amp;(ET)   ||(OU)   !(NON)
 Affectation    =        ≠ ==</code></pre>
-<pre class="cours-code"><code>6 % 3        // → 0   3 divise 6
+<pre class="cours-code"><code class="language-javascript">6 % 3        // → 0   3 divise 6
 6 % 4        // → 2   4 ne divise pas 6
 n % 2 == 0   // n est pair
 
@@ -292,7 +298,7 @@ n % 2 == 0   // n est pair
                 <p><code>if / else</code> a la même syntaxe dans les quatre langages. On <strong>imbrique</strong> pour des cas hiérarchisés, on <strong>chaîne</strong> avec <code>else if</code> pour des cas de même niveau, on utilise <code>switch</code> pour comparer une variable à des valeurs fixes. Règle d'or : les cas particuliers et les cas d'erreur passent <strong>avant</strong> le cas général — c'est ce qui protège le calcul qui suit.</p>
 
                 <div class="cours-codes">
-<pre class="cours-code"><code>// Syntaxe commune C / Java / JS / PHP
+<pre class="cours-code"><code class="language-c">// Syntaxe commune C / Java / JS / PHP
 if (a == 0) {
     // cas particulier d'abord
 } else if (a &gt; 0) {
@@ -300,7 +306,7 @@ if (a == 0) {
 } else {
     // cas restant
 }</code></pre>
-<pre class="cours-code"><code>// Imbrication : sécuriser AVANT de calculer
+<pre class="cours-code"><code class="language-javascript">// Imbrication : sécuriser AVANT de calculer
 if (a == 0) {
     if (b == 0) { message = "Une infinité de solutions"; }
     else        { message = "Aucune solution"; }
@@ -318,14 +324,14 @@ if (a == 0) {
                 <p>Une seule question détermine le choix : <strong>connaît-on le nombre de répétitions ?</strong> Oui → <code>for</code>, qui réunit initialisation, condition et incrémentation sur une ligne. Non → <code>while</code>, ou <code>do...while</code> si le bloc doit s'exécuter au moins une fois. Risque constant : la <strong>boucle infinie</strong>, quand la condition d'arrêt ne peut jamais devenir fausse. La syntaxe est identique partout, à la déclaration du compteur près.</p>
 
                 <div class="cours-codes">
-<pre class="cours-code"><code>// POUR — (1: init ; 2: condition ; 3: incrémentation)
+<pre class="cours-code"><code class="language-c">// POUR — (1: init ; 2: condition ; 3: incrémentation)
 for (int i = 1; i &lt;= n; i++) { }    // C et Java
 for (let i = 1; i &lt;= n; i++) { }    // JS
 for ($i = 1; $i &lt;= $n; $i++) { }    // PHP
 
 // TANT QUE — modifier la condition ici, sinon boucle infinie
 while (condition) { }</code></pre>
-<pre class="cours-code"><code>// Boucle + condition : parcourir en filtrant
+<pre class="cours-code"><code class="language-javascript">// Boucle + condition : parcourir en filtrant
 let resultats = [];
 for (let i = 1; i &lt;= n; i++) {
     if (n % i == 0) {
@@ -344,7 +350,7 @@ console.log(resultats.join(", "));</code></pre>
                 <p>Les quatre langages partagent la même logique — séquence, condition, répétition — et ne diffèrent que par l'habillage. Maîtriser l'algorithme, c'est n'avoir plus qu'un tableau de correspondances à apprendre. Conventions valables partout : indentation par bloc, noms explicites, commentaires utiles, point-virgule en fin d'instruction.</p>
 
                 <div class="cours-codes">
-<pre class="cours-code"><code>             Déclarer   Lire                Afficher
+<pre class="cours-code"><code class="language-plaintext">             Déclarer   Lire                Afficher
 C            int nb;    scanf("%d", &amp;nb)    printf("%d", nb)
 Java         int nb;    sc.nextInt()        System.out.println(nb)
 JavaScript   let nb;    prompt("...")       console.log(nb)
@@ -354,7 +360,7 @@ Conversion   C: %d / %f   Java: Integer.parseInt()
              JS: parseInt()   PHP: intval()
 Concaténer   Java et JS: "a" + b   PHP: "a" . $b
 Exécution    C: natif   Java: JVM   JS: client   PHP: serveur</code></pre>
-<pre class="cours-code"><code>Le tronc commun :
+<pre class="cours-code"><code class="language-plaintext">Le tronc commun :
 
   variables  →  stocker
   E / S      →  lire et afficher
@@ -375,8 +381,8 @@ Tout le reste n'est que syntaxe.</code></pre>
         <img
           src="../images/icons/ynov-icons.svg"
           alt="Logo Ynov Campus"
-          width="72"
-          height="24"
+          width="60"
+          height="20"
         />
       </div>
 
@@ -404,5 +410,10 @@ Tout le reste n'est que syntaxe.</code></pre>
         </svg>
       </a>
     </footer>
+    <!-- // -- SCRIPTS -- \ -->
+    <!-- highlight.js doit être chargé avant cours.js, qui l'utilise -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/highlight.min.js"></script>
+    <script src="../js/cours.js"></script>
+    <!-- // -- EO SCRIPTS -- \ -->
   </body>
 </html>

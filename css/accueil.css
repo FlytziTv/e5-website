@@ -2,28 +2,10 @@
    Charge APRES global.css et layout.css : peut donc redefinir
    leurs regles sans !important. */
 
-/* layout.css pose un gap de 12 px entre le titre et le paragraphe.
-   La maquette les colle : on annule ce gap et on gere l'ecart
-   avec les marges ci-dessous. */
+/* Titre et description : mise en forme commune definie dans layout.css
+   (comme sur la page exercices). Ici on regle seulement l'ecart avec la suite. */
 .main-content-header {
-  gap: 0;
-  margin-bottom: 56px;
-}
-
-.main-content-header h1 {
-  font-size: 28px;
-  font-weight: 700;
-  letter-spacing: var(--ls-h2);
-  line-height: 1.2;
-  margin: 0;
-}
-
-.main-content-header p {
-  font-size: 12px;
-  line-height: 1.25;
-  color: var(--color-text-secondary);
-  max-width: 500px;
-  margin: 0;
+  margin-bottom: var(--space-5);
 }
 
 .section-accueil {
@@ -35,7 +17,7 @@
 }
 
 .section-titre {
-  font-size: 16px;
+  font-size: var(--fs-body);
   font-weight: 700;
   letter-spacing: var(--ls-h3);
   margin: 0 0 var(--space-3);
@@ -44,7 +26,7 @@
 .btn--petit {
   min-height: 24px;
   padding: 0 10px;
-  font-size: 11px;
+  font-size: var(--fs-small);
   font-weight: 500;
 }
 
@@ -110,7 +92,7 @@
 }
 
 .membre-nom {
-  font-size: 14px;
+  font-size: var(--fs-label);
   font-weight: 700;
   letter-spacing: var(--ls-h3);
   line-height: 1.2;
@@ -118,14 +100,14 @@
 }
 
 .membre-role {
-  font-size: 11px;
+  font-size: var(--fs-small);
   line-height: 1.2;
   color: var(--color-text-secondary);
   margin: 0;
 }
 
 .membre-alternance {
-  font-size: 11px;
+  font-size: var(--fs-small);
   line-height: 1.2;
   color: var(--color-text-secondary);
   margin: 0;
@@ -150,18 +132,24 @@
 }
 
 .langage {
-  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
-  font-size: 11px;
+  font-family: var(--font-family-secondary);
+  font-size: var(--fs-small);
   line-height: 1.5;
   padding: var(--space-1) var(--space-3);
   border-radius: var(--radius-pill);
   background-color: var(--color-lavender);
   color: var(--color-ink);
-  transition: background-color 0.25s ease;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
+/* Survol leger : meme surelevation que les listes, avec une ombre discrete */
 .langage:hover {
   background-color: #e4dcf7;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(20, 18, 31, 0.08);
 }
 
 .entreprise-grille {
@@ -213,28 +201,11 @@
 }
 
 .entreprise-nom {
-  font-size: 14px;
+  font-size: var(--fs-label);
   font-weight: 700;
   letter-spacing: var(--ls-h3);
   line-height: 1.2;
   margin: 0;
-}
-
-.entreprise-secteur {
-  font-size: 11px;
-  line-height: 1.2;
-  color: var(--color-text-secondary);
-  margin: 0;
-}
-
-/* Le logo Ynov est violet : le filtre le rend blanc pour rester
-   lisible sur le fond fonce du pied de page. */
-.footerBrand {
-  position: absolute;
-  left: 24px;
-  display: flex;
-  align-items: center;
-  filter: brightness(0) invert(1);
 }
 
 @media (max-width: 1024px) {
@@ -250,10 +221,6 @@
     grid-template-columns: 1fr;
   }
 
-  .main-content-header h1 {
-    font-size: 24px;
-  }
-
   .main-content-header br {
     display: none;
   }
@@ -265,13 +232,7 @@
   .btn--petit {
     min-height: 44px;
     padding: 0 var(--space-4);
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 720px) {
-  .footerBrand {
-    display: none;
+    font-size: var(--fs-label);
   }
 }
 

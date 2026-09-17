@@ -168,17 +168,24 @@
     <!-- // -- FOOTER -- \\ -->
     <!-- Pied de page : logo, adresse, lien Instagram -->
     <footer class="footer">
-      <img
-        src="../images/icons/ynov-icons.svg"
-        alt="Logo Ynov"
-        width="70"
-        height="25"
-        background-color="var(--color-white)"
-      />
+      <div class="footerBrand">
+        <img
+          src="../images/icons/ynov-icons.svg"
+          alt="Logo Ynov"
+          width="60"
+          height="20"
+        />
+      </div>
       <p class="footerAddress">12 rue Anatole France, 92000 Nanterre</p>
 
       <!-- aria-label : nom du lien lu par les lecteurs d'écran (le lien ne contient qu'une icône) -->
-      <a href="#" class="footerSocial" aria-label="Instagram">
+      <a
+        href="https://www.instagram.com/ynovparis/"
+        class="footerSocial"
+        aria-label="Instagram"
+        target="_blank"
+        rel="noopener"
+      >
         <!-- Icône Instagram dessinée en SVG : un carré arrondi, un cercle, un point -->
         <svg
           viewBox="0 0 24 24"
