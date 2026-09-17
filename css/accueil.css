@@ -1,0 +1,283 @@
+/* Styles propres a la page d'accueil (index.html).
+   Charge APRES global.css et layout.css : peut donc redefinir
+   leurs regles sans !important. */
+
+/* layout.css pose un gap de 12 px entre le titre et le paragraphe.
+   La maquette les colle : on annule ce gap et on gere l'ecart
+   avec les marges ci-dessous. */
+.main-content-header {
+  gap: 0;
+  margin-bottom: 56px;
+}
+
+.main-content-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: var(--ls-h2);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.main-content-header p {
+  font-size: 12px;
+  line-height: 1.25;
+  color: var(--color-text-secondary);
+  max-width: 500px;
+  margin: 0;
+}
+
+.section-accueil {
+  margin-bottom: 64px;
+}
+
+.section-accueil:last-child {
+  margin-bottom: 0;
+}
+
+.section-titre {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: var(--ls-h3);
+  margin: 0 0 var(--space-3);
+}
+
+.btn--petit {
+  min-height: 24px;
+  padding: 0 10px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.membre-liens .btn--secondary {
+  background-color: var(--color-white);
+  color: var(--color-ink);
+}
+
+.membre-liens .btn--secondary:hover {
+  background-color: var(--color-lavender);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.membre-grille {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--grid-gutter);
+}
+
+.membre {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  transition:
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.membre:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.membre-entete {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.membre-avatar {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #ddd3f5;
+  color: var(--color-primary);
+}
+
+.membre-avatar svg {
+  width: 13px;
+  height: 13px;
+}
+
+.membre-nom {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: var(--ls-h3);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.membre-role {
+  font-size: 11px;
+  line-height: 1.2;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.membre-alternance {
+  font-size: 11px;
+  line-height: 1.2;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.membre-liens {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: auto 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.langage-liste {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.langage {
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 11px;
+  line-height: 1.5;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-lavender);
+  color: var(--color-ink);
+  transition: background-color 0.25s ease;
+}
+
+.langage:hover {
+  background-color: #e4dcf7;
+}
+
+.entreprise-grille {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--grid-gutter);
+}
+
+.entreprise {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  transition:
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.entreprise:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.entreprise-entete {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.entreprise-logo {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  color: var(--color-primary);
+}
+
+.entreprise-logo svg {
+  width: 12px;
+  height: 12px;
+}
+
+.entreprise-nom {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: var(--ls-h3);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.entreprise-secteur {
+  font-size: 11px;
+  line-height: 1.2;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* Le logo Ynov est violet : le filtre le rend blanc pour rester
+   lisible sur le fond fonce du pied de page. */
+.footerBrand {
+  position: absolute;
+  left: 24px;
+  display: flex;
+  align-items: center;
+  filter: brightness(0) invert(1);
+}
+
+@media (max-width: 1024px) {
+  .membre-grille,
+  .entreprise-grille {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .membre-grille,
+  .entreprise-grille {
+    grid-template-columns: 1fr;
+  }
+
+  .main-content-header h1 {
+    font-size: 24px;
+  }
+
+  .main-content-header br {
+    display: none;
+  }
+
+  .section-accueil {
+    margin-bottom: var(--space-6);
+  }
+
+  .btn--petit {
+    min-height: 44px;
+    padding: 0 var(--space-4);
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 720px) {
+  .footerBrand {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .membre-liens .btn {
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+}

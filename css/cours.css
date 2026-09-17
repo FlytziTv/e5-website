@@ -1,0 +1,276 @@
+/* Styles propres a la page pages/cours.html.
+   Charge APRES global.css et layout.css : peut donc redefinir
+   leurs regles sans !important. */
+
+/* layout.css pose un gap de 12 px entre le titre et le paragraphe.
+   La maquette les colle : on annule ce gap. */
+.main-content-header {
+  gap: 0;
+  margin-bottom: 16px;
+}
+
+.main-content-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: var(--ls-h2);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.main-content-header p {
+  font-size: 12px;
+  line-height: 1.25;
+  color: var(--color-text-secondary);
+  max-width: 700px;
+  margin: 0;
+}
+
+.cours-module {
+  position: relative;
+}
+
+/* Les boutons radio sont invisibles MAIS restent atteignables au
+   clavier : surtout pas display:none, sinon la touche Tab ne les
+   atteindrait plus. Leur parent .cours-module est en position:relative. */
+.cours-radio {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cours-liste {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  list-style: none;
+  margin: 0 0 var(--space-5);
+  padding: 0;
+}
+
+.cours-ligne {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: 36px;
+  padding: 6px var(--space-4);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  cursor: pointer;
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.cours-ligne:hover {
+  background-color: var(--color-surface);
+}
+
+.cours-numero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  color: var(--color-ink);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.cours-numero--en-cours {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.cours-titre {
+  flex: 1;
+  font-size: 13px;
+  line-height: 1.2;
+  font-weight: 500;
+}
+
+.cours-etat {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.cours-etat--en-cours {
+  color: var(--color-primary);
+}
+
+/* Coeur du depliage. Lecture du selecteur :
+   « le radio #cours-1 est coche, alors dans la liste qui le suit (~),
+     je mets en evidence le label qui pointe vers lui ». */
+#cours-1:checked ~ .cours-liste label[for="cours-1"],
+#cours-2:checked ~ .cours-liste label[for="cours-2"],
+#cours-3:checked ~ .cours-liste label[for="cours-3"],
+#cours-4:checked ~ .cours-liste label[for="cours-4"],
+#cours-5:checked ~ .cours-liste label[for="cours-5"],
+#cours-6:checked ~ .cours-liste label[for="cours-6"],
+#cours-7:checked ~ .cours-liste label[for="cours-7"] {
+  background-color: var(--color-lavender);
+  border-color: #cfc0f0;
+}
+
+#cours-1:focus-visible ~ .cours-liste label[for="cours-1"],
+#cours-2:focus-visible ~ .cours-liste label[for="cours-2"],
+#cours-3:focus-visible ~ .cours-liste label[for="cours-3"],
+#cours-4:focus-visible ~ .cours-liste label[for="cours-4"],
+#cours-5:focus-visible ~ .cours-liste label[for="cours-5"],
+#cours-6:focus-visible ~ .cours-liste label[for="cours-6"],
+#cours-7:focus-visible ~ .cours-liste label[for="cours-7"] {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.cours-panneau {
+  display: none;
+}
+
+/* Meme principe pour afficher le panneau correspondant. */
+#cours-1:checked ~ .cours-panneaux #panneau-1,
+#cours-2:checked ~ .cours-panneaux #panneau-2,
+#cours-3:checked ~ .cours-panneaux #panneau-3,
+#cours-4:checked ~ .cours-panneaux #panneau-4,
+#cours-5:checked ~ .cours-panneaux #panneau-5,
+#cours-6:checked ~ .cours-panneaux #panneau-6,
+#cours-7:checked ~ .cours-panneaux #panneau-7 {
+  display: block;
+  animation: apparition 0.3s ease;
+}
+
+@keyframes apparition {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cours-panneau-titre {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--color-text-secondary);
+  background-color: var(--color-lavender);
+  border-radius: 10px;
+  padding: 4px var(--space-4);
+  margin: 0 0 var(--space-2);
+}
+
+.cours-panneau-corps {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 12px 16px;
+}
+
+.cours-panneau-corps p {
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* Bien cibler « p code » : sans le p, la regle toucherait aussi le
+   <code> des blocs noirs <pre> et leur fond deviendrait clair. */
+.cours-panneau-corps p code {
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 10px;
+  padding: 1px 4px;
+  border-radius: 4px;
+  background-color: var(--color-lavender);
+  color: var(--color-primary);
+}
+
+.cours-panneau-corps strong {
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+.cours-codes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+
+.cours-code {
+  background-color: var(--color-ink);
+  color: var(--color-white);
+  border-radius: 10px;
+  padding: var(--space-4);
+  margin: 0;
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 11px;
+  line-height: 1.7;
+  overflow-x: auto;
+}
+
+.footerBrand {
+  position: absolute;
+  left: 24px;
+  display: flex;
+  align-items: center;
+  filter: brightness(0) invert(1);
+}
+
+@media (max-width: 768px) {
+  .main-content-header h1 {
+    font-size: 24px;
+  }
+
+  .main-content-header br {
+    display: none;
+  }
+
+  .cours-ligne {
+    min-height: 44px;
+  }
+
+  .cours-codes {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .cours-ligne {
+    flex-wrap: wrap;
+    padding: var(--space-3);
+  }
+
+  .cours-titre {
+    flex: 1 1 auto;
+  }
+
+  .cours-etat {
+    flex: 1 1 100%;
+    padding-left: 34px;
+  }
+}
+
+@media (max-width: 720px) {
+  .footerBrand {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cours-ligne,
+  .cours-panneau {
+    transition: none;
+    animation: none;
+  }
+}
