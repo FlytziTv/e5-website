@@ -78,10 +78,11 @@
     background-color: var(--color-lavender);
     padding: 6px 10px;
     border-radius: var(--radius-card);
-    p {
-      color: var(--color-ink);
-    }
   }
+}
+
+.exo-attendu > div > p {
+  color: var(--color-ink);
 }
 
 .exo-code {
@@ -127,7 +128,7 @@
 .exo-code-content {
   padding: 10px;
   border-radius: var(--radius-card);
-  p {
+  pre {
     font-family: var(--font-secondary);
     font-size: var(--fs-label);
     color: var(--color-white);

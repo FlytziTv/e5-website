@@ -31,7 +31,7 @@
         <p class="sidebarLabel">Navigation</p>
 
         <nav class="nav-list">
-          <a href="pages/accueil.html" class="nav-item">
+          <a href="../pages/accueil.html" class="nav-item">
             <i data-lucide="house" class="nav-item-icon"></i>
             <span>Accueil</span>
           </a>
@@ -76,7 +76,7 @@
             <button class="language-button" data-language="Algo">Algo</button>
             <button class="language-button" data-language="C">C</button>
             <button class="language-button" data-language="Java">Java</button>
-            <button class="language-button" data-language="JavaScript">
+            <button class="language-button" data-language="Javascript">
               JavaScript
             </button>
             <button class="language-button" data-language="PHP">PHP</button>
@@ -90,7 +90,9 @@
               <div class="exo-attendu">
                 <p>Attendu</p>
                 <div>
-                  <p>Resultat : lorem ipsum dolor sit amet</p>
+                  <p class="attendu-exo">
+                    Resultat : lorem ipsum dolor sit amet
+                  </p>
                 </div>
               </div>
             </div>
@@ -102,17 +104,18 @@
               </div>
               <span class="exo-line"></span>
               <div class="exo-code-content">
-                <p>
-                  ALGORITHME Rectangle <br />
-                  VARIABLES lg, lr, s, p : RÉEL <br />
-                  DÉBUT LIRE lg <br />
-                  LIRE lr <br />
-                  s ← lg * lr <br />
-                  p ← 2 * (lg + lr) <br />
-                  AFFICHER "La surface est de : ", s <br />
-                  AFFICHER "Le périmètre est de : ", p <br />
-                  FIN
-                </p>
+                <pre>
+ALGORITHME Rectangle
+VARIABLES                   
+        lg, lr, s, p : RÉEL
+DÉBUT LIRE lg
+    LIRE lr
+    s ← lg * lr
+    p ← 2 * (lg + lr)
+    AFFICHER "La surface est de : ", s
+    AFFICHER "Le périmètre est de : ", p
+FIN                  
+                </pre>
               </div>
               <span class="exo-line"></span>
               <div class="exo-code-sortie">
@@ -221,7 +224,8 @@
       </a>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/exercices.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
       lucide.createIcons();
