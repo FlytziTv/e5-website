@@ -81,7 +81,9 @@ body {
   font-size: 14px;
   transition:
     background-color 0.15s ease,
-    color 0.15s ease;
+    color 0.15s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .nav-item-icon {
@@ -92,6 +94,8 @@ body {
 
 .nav-item:hover {
   background-color: var(--color-white);
+  transform: translate(-2px);
+  box-shadow: 0 4px 10px rgba(20, 18, 31, 0.1);
 }
 
 .nav-item-active,

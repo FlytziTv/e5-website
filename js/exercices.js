@@ -1,0 +1,484 @@
+// Pour chaque langage :
+// - extension : affichée dans l'en-tête du code (Ex01.c)
+// - coloration : nom du langage pour highlight.js ("php-template" = PHP mélangé à du HTML)
+// Les clés doivent être identiques aux data-language des boutons du HTML (majuscules comprises)
+const langages = {
+  Algo: { extension: "algo", coloration: "algo" },
+  C: { extension: "c", coloration: "c" },
+  Java: { extension: "java", coloration: "java" },
+  JavaScript: { extension: "js", coloration: "javascript" },
+  PHP: { extension: "php", coloration: "php-template" },
+};
+
+// Chaque exercice a un énoncé commun et un code par langage
+const exercices = {
+  1: {
+    numero: "01",
+    nom: "Surface et périmètre d'un rectangle",
+    enonce:
+      "Lire la longueur et la largeur d'un rectangle, calculer sa surface et son périmètre, afficher les deux résultats. Attention à convertir la saisie en nombre avant de calculer.",
+    attendu: `
+      La surface est de : 15
+      Le périmètre est de : 16
+    `,
+    codes: {
+      Algo: `
+        ALGORITHME Rectangle
+        VARIABLES
+            lg, lr, s, p : RÉEL
+        DÉBUT
+            LIRE lg
+            LIRE lr
+            s ← lg * lr
+            p ← 2 * (lg + lr)
+            AFFICHER "La surface est de : ", s
+            AFFICHER "Le périmètre est de : ", p
+        FIN
+      `,
+      C: `
+        #include <stdio.h>
+
+        int main() {
+            float lg, lr, s, p;
+
+            printf("Longueur : ");
+            scanf("%f", &lg);
+            printf("Largeur : ");
+            scanf("%f", &lr);
+
+            s = lg * lr;
+            p = 2 * (lg + lr);
+
+            printf("La surface est de : %.2f\\n", s);
+            printf("Le perimetre est de : %.2f\\n", p);
+            return 0;
+        }
+      `,
+      Java: `
+        import java.util.Scanner;
+
+        public class Rectangle {
+            public static void main(String[] args) {
+                Scanner sc = new Scanner(System.in);
+
+                System.out.print("Longueur : ");
+                double lg = sc.nextDouble();
+                System.out.print("Largeur : ");
+                double lr = sc.nextDouble();
+
+                double s = lg * lr;
+                double p = 2 * (lg + lr);
+
+                System.out.println("La surface est de : " + s);
+                System.out.println("Le périmètre est de : " + p);
+            }
+        }
+      `,
+      JavaScript: `
+        let lg = parseFloat(prompt("Entrez la longueur du rectangle :"));
+        let lr = parseFloat(prompt("Entrez la largeur du rectangle :"));
+
+        let s = lg * lr;
+        let p = 2 * (lg + lr);
+
+        document.write("La surface est de : " + s + "<br>");
+        document.write("Le périmètre est de : " + p);
+      `,
+      PHP: `
+        <form method="POST">
+            Longueur : <input type="text" name="lg"><br>
+            Largeur  : <input type="text" name="lr"><br>
+            <input type="submit" name="Calculer" value="Calculer">
+        </form>
+
+        <?php
+        if (isset($_POST["Calculer"])) {
+            $lg = floatval($_POST["lg"]);
+            $lr = floatval($_POST["lr"]);
+
+            $s = $lg * $lr;
+            $p = 2 * ($lg + $lr);
+
+            printf("La surface est de : %.2f <br>", $s);
+            printf("Le périmètre est de : %.2f", $p);
+        }
+        ?>
+      `,
+    },
+  },
+  2: {
+    numero: "02",
+    nom: "Équation du premier degré",
+    enonce:
+      "Résoudre l'équation a·x + b = 0. Lire les coefficients a et b, puis afficher la solution. Gérer les deux cas particuliers : si a et b sont nuls, l'ensemble des solutions est ℝ ; si a est nul et b ne l'est pas, il est vide. Ne jamais diviser avant d'avoir testé a.",
+    attendu: `
+      La solution est de : 3
+    `,
+    codes: {
+      Algo: `
+        ALGORITHME Equation
+        VARIABLES
+            a, b, x : RÉEL
+        DÉBUT
+            LIRE a
+            LIRE b
+            SI a = 0 ALORS
+                SI b = 0 ALORS
+                    AFFICHER "L'ensemble des solutions est R"
+                SINON
+                    AFFICHER "L'ensemble des solutions est vide"
+                FIN SI
+            SINON
+                x ← -b / a
+                AFFICHER "La solution est de : ", x
+            FIN SI
+        FIN
+      `,
+      C: `
+        #include <stdio.h>
+
+        int main() {
+            float a, b, x;
+
+            printf("Premier coefficient : ");
+            scanf("%f", &a);
+            printf("Deuxieme coefficient : ");
+            scanf("%f", &b);
+
+            if (a == 0) {
+                if (b == 0) {
+                    printf("L'ensemble des solutions est R\\n");
+                } else {
+                    printf("L'ensemble des solutions est vide\\n");
+                }
+            } else {
+                x = -b / a;
+                printf("La solution est de : %.2f\\n", x);
+            }
+            return 0;
+        }
+      `,
+      Java: `
+        import java.util.Scanner;
+
+        public class Equation {
+            public static void main(String[] args) {
+                Scanner sc = new Scanner(System.in);
+
+                System.out.print("Premier coefficient : ");
+                double a = sc.nextDouble();
+                System.out.print("Deuxième coefficient : ");
+                double b = sc.nextDouble();
+
+                if (a == 0) {
+                    if (b == 0) {
+                        System.out.println("L'ensemble des solutions est R");
+                    } else {
+                        System.out.println("L'ensemble des solutions est vide");
+                    }
+                } else {
+                    double x = -b / a;
+                    System.out.println("La solution est de : " + x);
+                }
+            }
+        }
+      `,
+      JavaScript: `
+        let a = parseFloat(prompt("Entrez le premier coefficient :"));
+        let b = parseFloat(prompt("Entrez le deuxième coefficient :"));
+
+        if (a == 0) {
+          if (b == 0) {
+            document.write("L'ensemble des solutions est R");
+          } else {
+            document.write("L'ensemble des solutions est vide");
+          }
+        } else {
+          let x = -b / a;
+          document.write("La solution est de : " + x);
+        }
+      `,
+      PHP: `
+        <form method="POST">
+            Premier coeff  : <input type="text" name="a"><br>
+            Deuxième coeff : <input type="text" name="b"><br>
+            <input type="submit" name="Resoudre" value="Résoudre">
+        </form>
+
+        <?php
+        if (isset($_POST["Resoudre"])) {
+            $a = floatval($_POST["a"]);
+            $b = floatval($_POST["b"]);
+
+            if ($a == 0) {
+                if ($b == 0) {
+                    echo "L'ensemble des solutions est R";
+                } else {
+                    echo "L'ensemble des solutions est vide";
+                }
+            } else {
+                $x = -$b / $a;
+                echo "La solution est de : " . $x;
+            }
+        }
+        ?>
+      `,
+    },
+  },
+  3: {
+    numero: "03",
+    nom: "Diviseurs d'un nombre",
+    enonce:
+      "Lire un entier positif et afficher tous ses diviseurs. Un entier div divise nb si le reste de la division entière est nul. Aucun diviseur n'étant inférieur à 1 ni supérieur à nb, il suffit de parcourir cet intervalle.",
+    attendu: `
+      Le diviseur est : 1
+      Le diviseur est : 2
+      Le diviseur est : 3
+      Le diviseur est : 6
+    `,
+    codes: {
+      Algo: `
+        ALGORITHME Diviseurs
+        VARIABLES
+            nb, div : ENTIER
+        DÉBUT
+            LIRE nb
+            POUR div DE 1 À nb FAIRE
+                SI nb MOD div = 0 ALORS
+                    AFFICHER "Le diviseur est : ", div
+                FIN SI
+            FIN POUR
+        FIN
+      `,
+      C: `
+        #include <stdio.h>
+
+        int main() {
+            int nb, div;
+
+            printf("Donner votre nombre : ");
+            scanf("%d", &nb);
+
+            for (div = 1; div <= nb; div++) {
+                if (nb % div == 0) {
+                    printf("Le diviseur est : %d\\n", div);
+                }
+            }
+            return 0;
+        }
+      `,
+      Java: `
+        import java.util.Scanner;
+
+        public class Diviseurs {
+            public static void main(String[] args) {
+                Scanner sc = new Scanner(System.in);
+
+                System.out.print("Donnez votre nombre : ");
+                int nb = sc.nextInt();
+
+                for (int div = 1; div <= nb; div++) {
+                    if (nb % div == 0) {
+                        System.out.println("Le diviseur est : " + div);
+                    }
+                }
+            }
+        }
+      `,
+      JavaScript: `
+        let nb = parseInt(prompt("Entrez un nombre :"));
+
+        for (let div = 1; div <= nb; div++) {
+          if (nb % div == 0) {
+            document.write("Le diviseur est : " + div + "<br>");
+          }
+        }
+      `,
+      PHP: `
+        <form method="POST">
+            Nombre : <input type="text" name="nb"><br>
+            <input type="submit" name="Afficher" value="Afficher les diviseurs">
+        </form>
+
+        <?php
+        if (isset($_POST["Afficher"])) {
+            $nb = intval($_POST["nb"]);
+
+            for ($div = 1; $div <= $nb; $div++) {
+                if ($nb % $div == 0) {
+                    echo "Le diviseur est : " . $div . "<br>";
+                }
+            }
+        }
+        ?>
+      `,
+    },
+  },
+};
+
+// Nettoie un texte écrit entre backticks (template literal).
+// Pourquoi : le texte garde les sauts de ligne et l'indentation du fichier JS,
+// il s'afficherait décalé dans la page.
+function nettoyerTexte(texte) {
+  // split("\n") : découpe le texte en tableau, une case par ligne
+  const lignes = texte.split("\n");
+
+  // shift() retire la 1re case du tableau, pop() la dernière
+  // trim() enlève les espaces : une ligne "vide" devient ""
+  while (lignes.length > 0 && lignes[0].trim() === "") {
+    //Tnt que la 1re ligne est vide, on la supprime
+    lignes.shift();
+  }
+  while (lignes.length > 0 && lignes[lignes.length - 1].trim() === "") {
+    lignes.pop();
+  }
+
+  // On cherche le plus petit décalage parmi les lignes non vides.
+  // filter() garde certaines lignes, map() transforme chaque ligne,
+  // search(/\S/) donne la position du 1er caractère qui n'est pas un espace,
+  // ...tableau (spread) passe chaque case comme argument à Math.min
+  const indentation = Math.min(
+    ...lignes
+      .filter((ligne) => ligne.trim() !== "")
+      .map((ligne) => ligne.search(/\S/)),
+  );
+
+  // slice(n) coupe les n premiers caractères, join("\n") recolle les lignes
+  return lignes.map((ligne) => ligne.slice(indentation)).join("\n");
+}
+
+// Construit la fin d'URL, ex : "?language=C&exo=2".
+// URLSearchParams s'occupe d'encoder les caractères spéciaux à notre place.
+function lienExercice(langage, numero) {
+  return "?" + new URLSearchParams({ language: langage, exo: numero });
+}
+
+// window.location.search = la partie de l'URL après "?"
+// C'est l'URL qui mémorise le langage et l'exercice choisis :
+// on peut recharger la page ou partager le lien sans rien perdre.
+const params = new URLSearchParams(window.location.search);
+
+// params.get() renvoie null si le paramètre n'existe pas.
+// langages[null] vaut undefined, et !undefined vaut true : on met une valeur par défaut.
+let language = params.get("language");
+if (!langages[language]) {
+  language = "Algo";
+}
+
+// Number() convertit le texte "2" en nombre 2 (les paramètres d'URL sont toujours du texte)
+let numeroExercice = Number(params.get("exo"));
+if (!exercices[numeroExercice]) {
+  numeroExercice = 1;
+}
+
+const exerciceSelectionne = exercices[numeroExercice];
+
+// querySelector() trouve le 1er élément qui correspond au sélecteur CSS.
+// textContent (et pas innerHTML) : le code PHP contient des balises <form>,
+// textContent les affiche comme du texte au lieu de les interpréter.
+document.querySelector(".num-exo").textContent =
+  "Ex" + exerciceSelectionne.numero;
+document.querySelector(".nom-exo").textContent = exerciceSelectionne.nom;
+document.querySelector(".desc-exo").textContent = exerciceSelectionne.enonce;
+document.querySelector(".exo-attendu .attendu-exo").textContent = nettoyerTexte(
+  exerciceSelectionne.attendu,
+);
+document.querySelector(".exo-code-header p").textContent =
+  "Ex" + exerciceSelectionne.numero + "." + langages[language].extension;
+
+// Le code va dans <pre><code> : <pre> garde les espaces, <code> reçoit les couleurs
+const blocCode = document.querySelector(".exo-code-content code");
+blocCode.textContent = nettoyerTexte(exerciceSelectionne.codes[language]);
+
+// Coloration du code avec highlight.js (chargé dans le HTML avant ce fichier).
+// typeof évite une erreur si la librairie n'a pas pu se charger (pas d'internet) :
+// le code s'affiche alors simplement sans couleurs.
+if (typeof hljs !== "undefined") {
+  // highlight.js ne connaît pas notre pseudo-code : on lui décrit ses mots-clés
+  hljs.registerLanguage("algo", () => ({
+    // $pattern : ce qui forme un mot. [A-Za-zÀ-ÿ] inclut les accents (DÉBUT, RÉEL)
+    keywords: {
+      $pattern: /[A-Za-zÀ-ÿ]+/,
+      keyword:
+        "ALGORITHME VARIABLES DÉBUT FIN SI ALORS SINON POUR DE À FAIRE MOD",
+      built_in: "LIRE AFFICHER",
+      type: "ENTIER RÉEL",
+    },
+    // Modes tout prêts de highlight.js pour colorer les "textes" et les nombres
+    contains: [hljs.QUOTE_STRING_MODE, hljs.NUMBER_MODE],
+  }));
+
+  // La classe "language-xxx" indique à highlight.js quel langage colorer
+  blocCode.className = "language-" + langages[language].coloration;
+  // highlightElement() découpe le code en <span> avec des classes (hljs-keyword...)
+  // que le thème CSS colore
+  hljs.highlightElement(blocCode);
+}
+
+// Bouton "Executer".
+// on simule l'exécution en affichant le résultat attendu dans "Sortie".
+const boutonExecuter = document.querySelector(".exo-code-button");
+const sortie = document.querySelector(".exo-code-sortie-content");
+
+// Avant le clic, la sortie invite à exécuter le code
+sortie.textContent = "Cliquez sur Executer pour lancer le programme";
+
+// addEventListener("click", fonction) : la fonction est appelée à chaque clic.
+// () => { ... } est une fonction fléchée, une écriture courte de function() { ... }
+boutonExecuter.addEventListener("click", () => {
+  sortie.textContent = nettoyerTexte(exerciceSelectionne.attendu);
+});
+
+// Boutons de langage.
+// querySelectorAll() renvoie TOUS les éléments trouvés, forEach() les parcourt un par un.
+document.querySelectorAll(".language-button").forEach((bouton) => {
+  // dataset.language lit l'attribut HTML data-language="..." du bouton
+  if (bouton.dataset.language === language) {
+    // classList.add() ajoute une classe CSS : ici pour colorer le bouton actif
+    bouton.classList.add("language-button-active");
+  }
+
+  // Au clic on change l'URL : le navigateur recharge la page avec le nouveau langage,
+  // et on garde le même numéro d'exercice
+  bouton.addEventListener("click", () => {
+    window.location.search = lienExercice(
+      bouton.dataset.language,
+      numeroExercice,
+    );
+  });
+});
+
+// Liste des exercices, générée à partir de l'objet exercices.
+// Pourquoi : ajouter un exercice dans les données suffit, pas besoin de toucher au HTML.
+const listeExercices = document.querySelector(".list-exercices");
+
+// for...in parcourt les clés d'un objet : ici "1", "2", "3"
+for (const numero in exercices) {
+  const exercice = exercices[numero];
+  // Object.keys() donne la liste des clés de codes ; - 1 car l'algo n'est pas un langage
+  const nbLangages = Object.keys(exercice.codes).length - 1;
+
+  // createElement() crée une balise en mémoire, pas encore visible dans la page.
+  // On utilise un lien <a> : clic, clic molette et clavier fonctionnent tout seuls.
+  const lien = document.createElement("a");
+  lien.className = "list-exercices-item";
+  lien.href = lienExercice(language, numero);
+
+  // numero est du texte (clé d'objet), numeroExercice un nombre : on convertit avant de comparer
+  if (Number(numero) === numeroExercice) {
+    lien.classList.add("list-exercices-item-active");
+  }
+
+  lien.innerHTML = `
+    <div>
+      <p class="num-exo-list">Ex${exercice.numero}</p>
+      <p class="nom-exo-list">${exercice.nom}</p>
+    </div>
+    <p>${nbLangages} langages</p>
+  `;
+
+  // appendChild() place l'élément dans la page : le lien dans le <li>, le <li> dans la liste
+  const item = document.createElement("li");
+  item.appendChild(lien);
+  listeExercices.appendChild(item);
+}

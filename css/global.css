@@ -15,6 +15,7 @@
 
   /* 02 — Typographie */
   --font-family: "Space Grotesk", sans-serif;
+  --font-family-secondary: "IBM Plex Mono", monospace;
   --fs-h1: 60px;
   --lh-h1: 700;
   --ls-h1: -3.5%;
