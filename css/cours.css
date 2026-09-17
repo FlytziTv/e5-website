@@ -2,27 +2,10 @@
    Charge APRES global.css et layout.css : peut donc redefinir
    leurs regles sans !important. */
 
-/* layout.css pose un gap de 12 px entre le titre et le paragraphe.
-   La maquette les colle : on annule ce gap. */
+/* Titre et description : mise en forme commune definie dans layout.css
+   (comme sur la page exercices). Ici on regle seulement l'ecart avec la suite. */
 .main-content-header {
-  gap: 0;
-  margin-bottom: 16px;
-}
-
-.main-content-header h1 {
-  font-size: 28px;
-  font-weight: 700;
-  letter-spacing: var(--ls-h2);
-  line-height: 1.2;
-  margin: 0;
-}
-
-.main-content-header p {
-  font-size: 12px;
-  line-height: 1.25;
-  color: var(--color-text-secondary);
-  max-width: 700px;
-  margin: 0;
+  margin-bottom: var(--space-5);
 }
 
 .cours-module {
@@ -52,23 +35,28 @@
   padding: 0;
 }
 
+/* Meme presentation que la liste d'exercices (voir css/exercices.css) */
 .cours-ligne {
   display: flex;
   align-items: center;
   gap: var(--space-3);
   min-height: 36px;
-  padding: 6px var(--space-4);
+  padding: var(--space-3);
   background-color: var(--color-white);
   border: 1px solid var(--color-border);
-  border-radius: 10px;
+  border-radius: var(--radius-card);
   cursor: pointer;
   transition:
-    background-color 0.25s ease,
-    border-color 0.25s ease;
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
+/* Meme surelevation au survol que les exercices */
 .cours-ligne:hover {
-  background-color: var(--color-surface);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(20, 18, 31, 0.1);
 }
 
 .cours-numero {
@@ -81,30 +69,23 @@
   border-radius: 50%;
   background-color: var(--color-accent);
   color: var(--color-ink);
-  font-size: 11px;
+  font-size: var(--fs-small);
   font-weight: 700;
-}
-
-.cours-numero--en-cours {
-  background-color: var(--color-primary);
-  color: var(--color-white);
 }
 
 .cours-titre {
   flex: 1;
-  font-size: 13px;
+  font-size: var(--fs-label);
   line-height: 1.2;
   font-weight: 500;
 }
 
+/* Present sur chaque ligne mais masque : seule la ligne ouverte l'affiche */
 .cours-etat {
-  font-size: 11px;
-  color: var(--color-text-secondary);
-  white-space: nowrap;
-}
-
-.cours-etat--en-cours {
+  display: none;
+  font-size: var(--fs-small);
   color: var(--color-primary);
+  white-space: nowrap;
 }
 
 /* Coeur du depliage. Lecture du selecteur :
@@ -118,7 +99,30 @@
 #cours-6:checked ~ .cours-liste label[for="cours-6"],
 #cours-7:checked ~ .cours-liste label[for="cours-7"] {
   background-color: var(--color-lavender);
-  border-color: #cfc0f0;
+  border-color: var(--color-primary);
+}
+
+/* Numero de la ligne ouverte : en violet */
+#cours-1:checked ~ .cours-liste label[for="cours-1"] .cours-numero,
+#cours-2:checked ~ .cours-liste label[for="cours-2"] .cours-numero,
+#cours-3:checked ~ .cours-liste label[for="cours-3"] .cours-numero,
+#cours-4:checked ~ .cours-liste label[for="cours-4"] .cours-numero,
+#cours-5:checked ~ .cours-liste label[for="cours-5"] .cours-numero,
+#cours-6:checked ~ .cours-liste label[for="cours-6"] .cours-numero,
+#cours-7:checked ~ .cours-liste label[for="cours-7"] .cours-numero {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+/* Etiquette « En cours » : affichee uniquement sur la ligne ouverte */
+#cours-1:checked ~ .cours-liste label[for="cours-1"] .cours-etat,
+#cours-2:checked ~ .cours-liste label[for="cours-2"] .cours-etat,
+#cours-3:checked ~ .cours-liste label[for="cours-3"] .cours-etat,
+#cours-4:checked ~ .cours-liste label[for="cours-4"] .cours-etat,
+#cours-5:checked ~ .cours-liste label[for="cours-5"] .cours-etat,
+#cours-6:checked ~ .cours-liste label[for="cours-6"] .cours-etat,
+#cours-7:checked ~ .cours-liste label[for="cours-7"] .cours-etat {
+  display: inline;
 }
 
 #cours-1:focus-visible ~ .cours-liste label[for="cours-1"],
@@ -160,7 +164,7 @@
 }
 
 .cours-panneau-titre {
-  font-size: 12px;
+  font-size: var(--fs-label);
   font-weight: 500;
   letter-spacing: 0;
   color: var(--color-text-secondary);
@@ -178,7 +182,7 @@
 }
 
 .cours-panneau-corps p {
-  font-size: 11px;
+  font-size: var(--fs-label);
   line-height: 1.5;
   color: var(--color-text-secondary);
   margin: 0;
@@ -187,8 +191,8 @@
 /* Bien cibler « p code » : sans le p, la regle toucherait aussi le
    <code> des blocs noirs <pre> et leur fond deviendrait clair. */
 .cours-panneau-corps p code {
-  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
-  font-size: 10px;
+  font-family: var(--font-family-secondary);
+  font-size: var(--fs-small);
   padding: 1px 4px;
   border-radius: 4px;
   background-color: var(--color-lavender);
@@ -210,28 +214,24 @@
 .cours-code {
   background-color: var(--color-ink);
   color: var(--color-white);
-  border-radius: 10px;
+  border-radius: var(--radius-card);
   padding: var(--space-4);
   margin: 0;
-  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
-  font-size: 11px;
-  line-height: 1.7;
+  font-family: var(--font-family-secondary);
+  font-size: var(--fs-small);
+  line-height: 1.6;
   overflow-x: auto;
 }
 
-.footerBrand {
-  position: absolute;
-  left: 24px;
-  display: flex;
-  align-items: center;
-  filter: brightness(0) invert(1);
+/* Le theme highlight.js ajoute son propre fond et une marge interieure :
+   on les retire pour garder le fond sombre du bloc. inherit = meme police que <pre> */
+.cours-code code.hljs {
+  background: transparent;
+  padding: 0;
+  font-family: inherit;
 }
 
 @media (max-width: 768px) {
-  .main-content-header h1 {
-    font-size: 24px;
-  }
-
   .main-content-header br {
     display: none;
   }
@@ -258,12 +258,6 @@
   .cours-etat {
     flex: 1 1 100%;
     padding-left: 34px;
-  }
-}
-
-@media (max-width: 720px) {
-  .footerBrand {
-    display: none;
   }
 }
 

@@ -78,6 +78,16 @@
   color: var(--color-text-secondary);
 }
 
+/* Bouts de code dans l'énoncé : même présentation que les cours */
+.desc-exo code {
+  font-family: var(--font-family-secondary);
+  font-size: var(--fs-small);
+  padding: 1px 4px;
+  border-radius: 4px;
+  background-color: var(--color-lavender);
+  color: var(--color-primary);
+}
+
 .exo-attendu {
   display: flex;
   flex-direction: column;

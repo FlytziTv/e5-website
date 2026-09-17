@@ -145,10 +145,27 @@ body {
   justify-content: center;
 }
 
+/* Le logo Ynov est violet : le filtre le rend blanc pour rester
+   lisible sur le fond fonce du pied de page. */
+.footerBrand {
+  position: absolute;
+  left: 24px;
+  display: flex;
+  align-items: center;
+  filter: brightness(0) invert(1);
+}
+
+/* Taille reelle du logo : les attributs width/height du HTML ne servent
+   qu'a reserver la place avant le chargement de l'image. */
+.footerBrand img {
+  width: 60px;
+  height: auto;
+}
+
 .footerAddress {
   margin: 0;
-  font-size: var(--fs-label);
-  color: var(--color-text-on-dark);
+  font-size: var(--fs-small);
+  color: var(--color-white);
 }
 
 .footerSocial {
@@ -185,5 +202,9 @@ body {
   .footer {
     justify-content: flex-start;
     padding-right: 60px;
+  }
+
+  .footerBrand {
+    display: none;
   }
 }
