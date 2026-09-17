@@ -11,4 +11,9 @@ desktop.ini
 # Divers
 *.log
 node_modules/
-documents/
+
+# Le dossier documents/ reste hors du depot (brouillons, comptes rendus),
+# SAUF les CV, qui doivent etre publies pour que les boutons
+# « Voir le CV » de la page d'accueil fonctionnent sur le site en ligne.
+documents/*
+!documents/cv-*.pdf
