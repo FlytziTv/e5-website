@@ -13,12 +13,28 @@
 
 .language-button {
   background-color: #ede4fb;
-  border: none;
+  /* Bordure transparente : elle prend déjà sa place, le bouton ne bouge pas quand elle apparaît au survol */
+  border: 1px solid transparent;
   padding: 4px 14px;
   font-family: var(--font-family-secondary);
   border-radius: var(--radius-card);
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition:
+    border-color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.language-button:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(20, 18, 31, 0.1);
+}
+
+.language-button-active,
+.language-button-active:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
 }
 
 .exos-content {
@@ -83,6 +99,7 @@
 
 .exo-attendu > div > p {
   color: var(--color-ink);
+  white-space: pre-line;
 }
 
 .exo-code {
@@ -129,10 +146,17 @@
   padding: 10px;
   border-radius: var(--radius-card);
   pre {
-    font-family: var(--font-secondary);
+    font-family: var(--font-family-secondary);
     font-size: var(--fs-label);
     color: var(--color-white);
     margin: 0;
+  }
+  /* Le thème highlight.js ajoute son propre fond et une marge intérieure :
+     on les retire pour garder le fond sombre du bloc. inherit = même police que <pre> */
+  code.hljs {
+    background: transparent;
+    padding: 0;
+    font-family: inherit;
   }
 }
 
@@ -153,6 +177,8 @@
   font-size: var(--fs-label);
   color: var(--color-accent);
   margin: 0;
+  /* Garde les retours à la ligne du texte (sinon tout s'affiche sur une ligne) */
+  white-space: pre-line;
 }
 
 .list-exercices {
@@ -182,13 +208,26 @@ li {
   border-radius: var(--radius-card);
   border: 1px solid var(--color-border);
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   text-decoration: none;
   div {
     display: flex;
     flex-direction: row;
     gap: var(--space-5);
   }
+}
+
+.list-exercices-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(20, 18, 31, 0.1);
+}
+
+.list-exercices-item-active {
+  border-color: var(--color-primary);
+  background-color: var(--color-lavender);
 }
 
 .nom-exo-list {

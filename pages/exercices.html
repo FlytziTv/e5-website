@@ -5,13 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Site E5" />
     <title>E5 Website</title>
+
+    <!-- Styles communs à toutes les pages : variables (couleurs, tailles) puis mise en page -->
     <link rel="stylesheet" href="../css/global.css" />
     <link rel="stylesheet" href="../css/layout.css" />
+    <!-- Thème de couleurs pour le code (highlight.js) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/atom-one-dark.min.css"
+    />
+    <!-- Styles propres à cette page, en dernier pour pouvoir modifier le thème -->
     <link rel="stylesheet" href="../css/exercices.css" />
   </head>
 
   <body>
     <!-- // -- HEADER -- \\ -->
+    <!-- Barre du haut : logo + titre du site -->
     <header class="navbar">
       <div class="navbarBrand">
         <img
@@ -24,43 +33,48 @@
 
       <p class="title-navbar">E-enseignement</p>
     </header>
+    <!-- // -- EO HEADER -- \\ -->
 
+    <!-- Conteneur : sidebar à gauche, contenu principal à droite -->
     <div class="container">
       <!-- // -- SIDEBAR -- \\ -->
       <aside class="sidebar">
         <p class="sidebarLabel">Navigation</p>
 
+        <!-- Liens vers les pages. nav-item-active = page en cours (en violet) -->
+        <!-- <i data-lucide="..."> : icône remplacée par un dessin SVG par lucide.createIcons() -->
         <nav class="nav-list">
-          <a href="../pages/accueil.html" class="nav-item">
+          <a href="../index.html" class="nav-item">
             <i data-lucide="house" class="nav-item-icon"></i>
             <span>Accueil</span>
           </a>
 
-          <a href="pages/cours.html" class="nav-item">
+          <a href="cours.html" class="nav-item">
             <i data-lucide="square-library" class="nav-item-icon"></i>
             <span>Cours</span>
           </a>
 
-          <a href="pages/exercices.html" class="nav-item nav-item-active">
+          <a href="exercices.html" class="nav-item nav-item-active">
             <i data-lucide="drafting-compass" class="nav-item-icon"></i>
             <span>Exercices</span>
           </a>
 
-          <a href="pages/documentation.html" class="nav-item">
+          <a href="documentation.html" class="nav-item">
             <i data-lucide="book-open-text" class="nav-item-icon"></i>
             <span>Documentation</span>
           </a>
 
-          <a href="pages/contact.html" class="nav-item">
+          <a href="contact.html" class="nav-item">
             <i data-lucide="contact-round" class="nav-item-icon"></i>
             <span>Contact</span>
           </a>
         </nav>
       </aside>
+      <!-- // -- EO SIDEBAR -- \\ -->
 
       <!-- // -- MAIN CONTENT -- \\ -->
       <main class="main-content">
-        <!-- TITRE ET DESCRIPTION -->
+        <!-- // -- TITRE ET DESCRIPTION -- \\ -->
         <div class="main-content-header">
           <h1>Les exercices</h1>
           <p>
@@ -70,23 +84,36 @@
             fourni pour chaque version.
           </p>
         </div>
+        <!-- // -- EO TITRE ET DESCRIPTION -- \\ -->
 
+        <!--
+          Tout le bloc exercices est rempli par js/exercices.js
+          à partir de l'URL : exercices.html?language=C&exo=2
+          Les textes "lorem ipsum" ci-dessous sont remplacés au chargement.
+        -->
         <div class="exercices">
+          <!-- // -- CHOIX DU LANGAGE -- \\ -->
+          <!-- data-language doit être écrit comme les clés de "langages" dans le JS (majuscules comprises) -->
           <div class="language-choice">
             <button class="language-button" data-language="Algo">Algo</button>
             <button class="language-button" data-language="C">C</button>
             <button class="language-button" data-language="Java">Java</button>
-            <button class="language-button" data-language="Javascript">
+            <button class="language-button" data-language="JavaScript">
               JavaScript
             </button>
             <button class="language-button" data-language="PHP">PHP</button>
           </div>
+          <!-- // -- EO CHOIX DU LANGAGE -- \\ -->
 
+          <!-- Deux colonnes côte à côte : énoncé à gauche, code à droite -->
           <div class="exos-content">
+            <!-- // -- EXOS ENONCE -- \\ -->
             <div class="exo-enonce">
               <p class="num-exo">Ex01</p>
               <p class="nom-exo">lorem ipsum dolor sit amet</p>
               <p class="desc-exo">lorem ipsum dolor sit amet</p>
+
+              <!-- Résultat que le programme doit afficher -->
               <div class="exo-attendu">
                 <p>Attendu</p>
                 <div>
@@ -97,27 +124,27 @@
               </div>
             </div>
             <!-- // -- EO EXOS ENONCE -- \\ -->
+
+            <!-- // -- EXOS CODE -- \\ -->
             <div class="exo-code">
+              <!-- En-tête : nom du fichier (ex : Ex01.php) + bouton Executer -->
               <div class="exo-code-header">
                 <p>Ex01.php</p>
                 <button class="exo-code-button">Executer</button>
               </div>
+
+              <!-- Ligne de séparation -->
               <span class="exo-line"></span>
+
+              <!-- Code source : <pre> garde les espaces, <code> reçoit les couleurs de highlight.js -->
               <div class="exo-code-content">
-                <pre>
-ALGORITHME Rectangle
-VARIABLES                   
-        lg, lr, s, p : RÉEL
-DÉBUT LIRE lg
-    LIRE lr
-    s ← lg * lr
-    p ← 2 * (lg + lr)
-    AFFICHER "La surface est de : ", s
-    AFFICHER "Le périmètre est de : ", p
-FIN                  
-                </pre>
+                <pre><code></code></pre>
               </div>
+
+              <!-- Ligne de séparation -->
               <span class="exo-line"></span>
+
+              <!-- Sortie : affiche le résultat attendu au clic sur Executer -->
               <div class="exo-code-sortie">
                 <p class="exo-code-sortie-title">Sortie</p>
                 <p class="exo-code-sortie-content">La surface est de : 20</p>
@@ -125,73 +152,21 @@ FIN
             </div>
             <!-- // -- EO EXOS CODE -- \\ -->
           </div>
-          <!-- EO EXOS CONTENT -- \\ -->
+          <!-- // -- EO EXOS CONTENT -- \\ -->
 
+          <!-- // -- LISTE EXERCICES -- \\ -->
+          <!-- Vide ici : un lien par exercice est ajouté par le JS -->
           <div>
-            <ul class="list-exercices">
-              <li>
-                <div class="list-exercices-item">
-                  <div>
-                    <p class="num-exo-list">Ex01</p>
-                    <p class="nom-exo-list">
-                      Surface et périmètre d'un rectangle
-                    </p>
-                  </div>
-                  <p>4 languages</p>
-                </div>
-              </li>
-              <li>
-                <div class="list-exercices-item">
-                  <div>
-                    <p class="num-exo-list">Ex01</p>
-                    <p class="nom-exo-list">
-                      Surface et périmètre d'un rectangle
-                    </p>
-                  </div>
-                  <p>4 languages</p>
-                </div>
-              </li>
-              <li>
-                <div class="list-exercices-item">
-                  <div>
-                    <p class="num-exo-list">Ex02</p>
-                    <p class="nom-exo-list">
-                      Surface et périmètre d'un rectangle
-                    </p>
-                  </div>
-                  <p>4 languages</p>
-                </div>
-              </li>
-              <li>
-                <div class="list-exercices-item">
-                  <div>
-                    <p class="num-exo-list">Ex03</p>
-                    <p class="nom-exo-list">
-                      Surface et périmètre d'un rectangle
-                    </p>
-                  </div>
-                  <p>4 languages</p>
-                </div>
-              </li>
-              <li>
-                <div class="list-exercices-item">
-                  <div>
-                    <p class="num-exo-list">Ex04</p>
-                    <p class="nom-exo-list">
-                      Surface et périmètre d'un rectangle
-                    </p>
-                  </div>
-                  <p>4 languages</p>
-                </div>
-              </li>
-            </ul>
+            <ul class="list-exercices"></ul>
           </div>
           <!-- // -- EO LISTE EXERCICES -- \\ -->
         </div>
       </main>
+      <!-- // -- EO MAIN CONTENT -- \\ -->
     </div>
 
     <!-- // -- FOOTER -- \\ -->
+    <!-- Pied de page : logo, adresse, lien Instagram -->
     <footer class="footer">
       <img
         src="../images/icons/ynov-icons.svg"
@@ -202,7 +177,9 @@ FIN
       />
       <p class="footerAddress">12 rue Anatole France, 92000 Nanterre</p>
 
+      <!-- aria-label : nom du lien lu par les lecteurs d'écran (le lien ne contient qu'une icône) -->
       <a href="#" class="footerSocial" aria-label="Instagram">
+        <!-- Icône Instagram dessinée en SVG : un carré arrondi, un cercle, un point -->
         <svg
           viewBox="0 0 24 24"
           fill="none"
@@ -223,12 +200,19 @@ FIN
         </svg>
       </a>
     </footer>
+    <!-- // -- EO FOOTER -- \\ -->
 
+    <!-- // -- SCRIPTS -- \\ -->
+    <!-- En bas de page : le HTML est déjà chargé quand les scripts cherchent les éléments -->
     <script src="../js/script.js"></script>
+    <!-- highlight.js doit être chargé avant exercices.js, qui l'utilise -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/highlight.min.js"></script>
     <script src="../js/exercices.js"></script>
+    <!-- Lucide : remplace les balises <i data-lucide="..."> par les icônes -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
       lucide.createIcons();
     </script>
+    <!-- // -- EO SCRIPTS -- \\ -->
   </body>
 </html>
