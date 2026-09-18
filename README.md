@@ -6,12 +6,12 @@ Site statique en HTML, CSS et JavaScript, sans framework ni étape de compilatio
 
 ## Les pages
 
-| Page | Fichier | Contenu |
-|---|---|---|
-| Accueil | `index.html` | L'équipe, les langages pratiqués, les entreprises d'alternance et de stage |
-| Cours | `pages/cours.html` | Sept notions de base, de l'algorithme à sa traduction en C, Java, JavaScript et PHP |
-| Exercices | `pages/exercices.html` | Énoncés et corrigés en algo, C, Java, JavaScript et PHP, avec coloration du code |
-| Documentation | `pages/documentation.html` | Cahier des charges, charte graphique, diagrammes, maquette et outils du projet |
+| Page          | Fichier                    | Contenu                                                                             |
+| ------------- | -------------------------- | ----------------------------------------------------------------------------------- |
+| Accueil       | `index.html`               | L'équipe, les langages pratiqués, les entreprises d'alternance et de stage          |
+| Cours         | `pages/cours.html`         | Sept notions de base, de l'algorithme à sa traduction en C, Java, JavaScript et PHP |
+| Exercices     | `pages/exercices.html`     | Énoncés et corrigés en algo, C, Java, JavaScript et PHP, avec coloration du code    |
+| Documentation | `pages/documentation.html` | Cahier des charges, charte graphique, diagrammes, maquette et outils du projet      |
 
 ## Lancer le site
 
