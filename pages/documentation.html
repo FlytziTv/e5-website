@@ -40,35 +40,43 @@
         <p class="sidebarLabel">Navigation</p>
 
         <!-- Liens vers les pages. nav-item-active = page en cours (en violet) -->
-        <!-- <i data-lucide="..."> : icône remplacée par un dessin SVG par lucide.createIcons() -->
+        <!-- Icônes en SVG écrites dans le HTML : visibles même si JavaScript est désactivé -->
         <nav class="nav-list">
           <a href="../index.html" class="nav-item">
-            <i data-lucide="house" class="nav-item-icon"></i>
+            <svg class="nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 10.5 12 3l9 7.5" />
+              <path d="M5 9.5V21h14V9.5" />
+              <path d="M9.5 21v-6h5v6" />
+            </svg>
             <span>Accueil</span>
           </a>
 
           <a href="cours.html" class="nav-item">
-            <i data-lucide="square-library" class="nav-item-icon"></i>
+            <svg class="nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <path d="M7 7v10" />
+              <path d="M11 7v10" />
+              <path d="M15.5 7.5 17.5 17" />
+            </svg>
             <span>Cours</span>
           </a>
 
           <a href="exercices.html" class="nav-item">
-            <i data-lucide="drafting-compass" class="nav-item-icon"></i>
+            <svg class="nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="5" r="2" />
+              <path d="M10.6 6.7 5 20" />
+              <path d="M13.4 6.7 19 20" />
+              <path d="M8.5 15h7" />
+            </svg>
             <span>Exercices</span>
           </a>
 
-          <a
-            href="documentation.html"
-            class="nav-item nav-item-active"
-            aria-current="page"
-          >
-            <i data-lucide="book-open-text" class="nav-item-icon"></i>
+          <a href="documentation.html" class="nav-item nav-item-active" aria-current="page">
+            <svg class="nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M2 5h6a3 3 0 0 1 3 3v11a2.5 2.5 0 0 0-2.5-2H2z" />
+              <path d="M22 5h-6a3 3 0 0 0-3 3v11a2.5 2.5 0 0 1 2.5-2H22z" />
+            </svg>
             <span>Documentation</span>
-          </a>
-
-          <a href="contact.html" class="nav-item">
-            <i data-lucide="contact-round" class="nav-item-icon"></i>
-            <span>Contact</span>
           </a>
         </nav>
       </aside>
@@ -234,11 +242,6 @@
 
     <!-- // -- SCRIPTS -- \\ -->
     <script src="../js/script.js"></script>
-    <!-- Lucide : remplace les balises <i data-lucide="..."> par les icônes -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script>
-      lucide.createIcons();
-    </script>
     <!-- // -- EO SCRIPTS -- \\ -->
   </body>
 </html>
