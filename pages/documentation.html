@@ -3,13 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Site E5" />
-    <title>E5 Website</title>
+    <meta
+      name="description"
+      content="La documentation : cahier des charges, charte graphique, diagramme de Gantt, diagramme de cas d'utilisation et maquette du projet."
+    />
+    <title>Documentation — E-enseignement</title>
+
+    <!-- Styles communs à toutes les pages : variables (couleurs, tailles) puis mise en page -->
     <link rel="stylesheet" href="../css/global.css" />
     <link rel="stylesheet" href="../css/layout.css" />
+    <!-- Styles propres à cette page -->
     <link rel="stylesheet" href="../css/documentation.css" />
   </head>
+
   <body>
+    <!-- // -- HEADER -- \\ -->
+    <!-- Barre du haut : logo + titre du site -->
     <header class="navbar">
       <div class="navbarBrand">
         <img
@@ -22,97 +31,193 @@
 
       <p class="title-navbar">E-enseignement</p>
     </header>
+    <!-- // -- EO HEADER -- \\ -->
 
+    <!-- Conteneur : sidebar à gauche, contenu principal à droite -->
     <div class="container">
+      <!-- // -- SIDEBAR -- \\ -->
       <aside class="sidebar">
         <p class="sidebarLabel">Navigation</p>
 
+        <!-- Liens vers les pages. nav-item-active = page en cours (en violet) -->
+        <!-- <i data-lucide="..."> : icône remplacée par un dessin SVG par lucide.createIcons() -->
         <nav class="nav-list">
-          <a href="../pages/accueil.html" class="nav-item">
+          <a href="../index.html" class="nav-item">
             <i data-lucide="house" class="nav-item-icon"></i>
             <span>Accueil</span>
           </a>
 
-          <a href="../pages/cours.html" class="nav-item">
+          <a href="cours.html" class="nav-item">
             <i data-lucide="square-library" class="nav-item-icon"></i>
             <span>Cours</span>
           </a>
 
-          <a href="../pages/exercices.html" class="nav-item">
+          <a href="exercices.html" class="nav-item">
             <i data-lucide="drafting-compass" class="nav-item-icon"></i>
             <span>Exercices</span>
           </a>
 
-          <a href="../pages/documentation.html" class="nav-item nav-item-active">
+          <a
+            href="documentation.html"
+            class="nav-item nav-item-active"
+            aria-current="page"
+          >
             <i data-lucide="book-open-text" class="nav-item-icon"></i>
             <span>Documentation</span>
           </a>
 
-          <a href="../pages/contact.html" class="nav-item">
+          <a href="contact.html" class="nav-item">
             <i data-lucide="contact-round" class="nav-item-icon"></i>
             <span>Contact</span>
           </a>
         </nav>
       </aside>
+      <!-- // -- EO SIDEBAR -- \\ -->
 
+      <!-- // -- MAIN CONTENT -- \\ -->
       <main class="main-content">
+        <!-- // -- TITRE ET DESCRIPTION -- \\ -->
         <header class="main-content-header">
-          <h2>La documentation</h2>
+          <h1>La documentation</h1>
           <p>
-            Les livrables du projet : cahier des charges, diagrammes UML, diagramme de Gantt et comptes rendus. <br/>
+            Les livrables du projet : cahier des charges, charte graphique,
+            diagramme de Gantt, diagramme de cas d'utilisation et maquette.<br />
             Chaque document est lisible en ligne et téléchargeable.
           </p>
         </header>
-        <table>
-          <tr>
-            <td>
-              <article class="card" style="margin-top: var(--space-7);">
-                <h5 class="card__eyebrow">PDF</h5>
-                <h3 class="card__title">Cahier des charges</h3>
-                <p class="text-secondary">Périmètre, cible et contraintes du projet.</p>
-                <a href="/documents/cahier-des-charges.pdf" class="btn btn--secondary" target="_blank">Ouvrir →</a>
-              </article>
-            </td>
-            <td>
-              <article class="card" style="margin-top: var(--space-7);">
-                <h5 class="card__eyebrow">PDF</h5>
-                <h3 class="card__title">Cahier des charges</h3>
-                <p class="text-secondary">Périmètre, cible et contraintes du projet.</p>
-                <a href="/documents/cahier-des-charges.pdf" class="btn btn--secondary" target="_blank">Ouvrir →</a>
-              </article>
-            </td>
-            <td>
-              <article class="card" style="margin-top: var(--space-7);">
-                <h5 class="card__eyebrow">PDF</h5>
-                <h3 class="card__title">Cahier des charges</h3>
-                <p class="text-secondary">Périmètre, cible et contraintes du projet.</p>
-                <a href="/documents/cahier-des-charges.pdf" class="btn btn--secondary" target="_blank">Ouvrir</a>
-              </article>
-            </td>
-          </tr>
-        </table>
-        <article class="card" style="margin-top: var(--space-5); background-color: 	#f5f0fd" >
-          <h3 class="card__title">Outil du projet</h3>
-          <p class="btn body-text" target="_blank" style="background-color: var(--color-white); font-family: 'IBM Plex Mono', sans-serif, regular; margin-right: var(--space-3);">Trello</p>
-          <p class="btn body-text" target="_blank" style="background-color: var(--color-white); font-family: 'IBM Plex Mono', sans-serif, regular; margin-right: var(--space-3);">Figma</p>
-          <p class="btn body-text" target="_blank" style="background-color: var(--color-white); font-family: 'IBM Plex Mono', sans-serif, regular; margin-right: var(--space-3);">Mermaid</p>
-          <p class="btn body-text" target="_blank" style="background-color: var(--color-white); font-family: 'IBM Plex Mono', sans-serif, regular; margin-right: var(--space-3);">VSCode</p>
-        </article>
+        <!-- // -- EO TITRE ET DESCRIPTION -- \\ -->
+
+        <!-- // -- DOCUMENTS -- \\ -->
+        <!-- Les fichiers sont rangés dans documents/Documentation/ -->
+        <div class="document-grille">
+          <article class="document">
+            <p class="document-type">PDF</p>
+            <h2 class="document-nom">Cahier des charges</h2>
+            <p class="document-description">
+              Périmètre, cible et contraintes du projet.
+            </p>
+            <!-- target="_blank" : ouvre le fichier dans un nouvel onglet.
+                 La flèche est décorative : aria-hidden évite qu'elle soit lue -->
+            <a
+              class="document-lien"
+              href="../documents/Documentation/cahier-des-charges.pdf"
+              target="_blank"
+              rel="noopener"
+              >Ouvrir <span aria-hidden="true">→</span></a
+            >
+          </article>
+
+          <article class="document">
+            <p class="document-type">PDF</p>
+            <h2 class="document-nom">Charte graphique</h2>
+            <p class="document-description">
+              Couleurs, typographies et règles visuelles du site.
+            </p>
+            <a
+              class="document-lien"
+              href="../documents/Documentation/charte-graphique.pdf"
+              target="_blank"
+              rel="noopener"
+              >Ouvrir <span aria-hidden="true">→</span></a
+            >
+          </article>
+
+          <article class="document">
+            <p class="document-type">PNG</p>
+            <h2 class="document-nom">Diagramme de Gantt</h2>
+            <p class="document-description">
+              Planning du projet : tâches, durées et étapes.
+            </p>
+            <a
+              class="document-lien"
+              href="../documents/Documentation/diagramme-de-gantt.png"
+              target="_blank"
+              rel="noopener"
+              >Ouvrir <span aria-hidden="true">→</span></a
+            >
+          </article>
+
+          <article class="document">
+            <p class="document-type">PNG</p>
+            <h2 class="document-nom">Diagramme de cas d'utilisation</h2>
+            <p class="document-description">
+              Les acteurs du site et les actions possibles pour chacun.
+            </p>
+            <a
+              class="document-lien"
+              href="../documents/Documentation/diagramme-cas-utilisation.png"
+              target="_blank"
+              rel="noopener"
+              >Ouvrir <span aria-hidden="true">→</span></a
+            >
+          </article>
+
+          <article class="document">
+            <p class="document-type">PNG</p>
+            <h2 class="document-nom">Maquette</h2>
+            <p class="document-description">
+              Aperçu visuel des pages du site avant le développement.
+            </p>
+            <a
+              class="document-lien"
+              href="../documents/Documentation/maquette.png"
+              target="_blank"
+              rel="noopener"
+              >Ouvrir <span aria-hidden="true">→</span></a
+            >
+          </article>
+        </div>
+        <!-- // -- EO DOCUMENTS -- \\ -->
+
+        <!-- // -- OUTILS -- \\ -->
+        <!-- Bloc lavande. Les étiquettes ont la même taille que les langages de l'accueil
+             (classe etiquette, dans global.css), en blanc pour ressortir sur le fond -->
+        <section class="outils">
+          <h2 class="outils-titre">Outils du projet</h2>
+
+          <ul class="etiquette-liste">
+            <li class="etiquette">Trello</li>
+            <li class="etiquette">Figma</li>
+            <li class="etiquette">Mermaid</li>
+            <li class="etiquette">VS Code</li>
+          </ul>
+        </section>
+        <!-- // -- EO OUTILS -- \\ -->
       </main>
+      <!-- // -- EO MAIN CONTENT -- \\ -->
     </div>
 
+    <!-- // -- FOOTER -- \\ -->
+    <!-- Pied de page : logo, adresse, lien Instagram -->
     <footer class="footer">
+      <div class="footerBrand">
+        <img
+          src="../images/icons/ynov-icons.svg"
+          alt="Logo Ynov"
+          width="60"
+          height="20"
+        />
+      </div>
       <p class="footerAddress">12 rue Anatole France, 92000 Nanterre</p>
 
-      <a href="#" class="footerSocial" aria-label="Instagram">
+      <!-- aria-label : nom du lien lu par les lecteurs d'écran (le lien ne contient qu'une icône) -->
+      <a
+        href="https://www.instagram.com/ynovparis/"
+        class="footerSocial"
+        aria-label="Instagram"
+        target="_blank"
+        rel="noopener"
+      >
+        <!-- Icône Instagram dessinée en SVG : un carré arrondi, un cercle, un point -->
         <svg
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
           stroke-width="1.8"
           stroke-linecap="round"
-          stroke-linejoin="round">
-          
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
           <rect x="2.5" y="2.5" width="19" height="19" rx="5" />
           <circle cx="12" cy="12" r="4.2" />
           <circle
@@ -125,11 +230,15 @@
         </svg>
       </a>
     </footer>
+    <!-- // -- EO FOOTER -- \\ -->
 
-    <script src="js/script.js"></script>
+    <!-- // -- SCRIPTS -- \\ -->
+    <script src="../js/script.js"></script>
+    <!-- Lucide : remplace les balises <i data-lucide="..."> par les icônes -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
       lucide.createIcons();
     </script>
+    <!-- // -- EO SCRIPTS -- \\ -->
   </body>
 </html>

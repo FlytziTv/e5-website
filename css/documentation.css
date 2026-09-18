@@ -1,18 +1,137 @@
-/* main-header-documentation {
+/* Styles propres a la page pages/documentation.html.
+   Charge APRES global.css et layout.css : peut donc redefinir
+   leurs regles sans !important.
+   Les etiquettes d'outils (.etiquette) sont communes avec l'accueil :
+   elles sont dans global.css. */
+
+/* Titre et description : mise en forme commune definie dans layout.css.
+   Ici on regle seulement l'ecart avec la suite, comme sur les autres pages. */
+.main-content-header {
   margin-bottom: var(--space-5);
 }
 
-main-title-documentation {
-  font-size: var(--fs-h2);
-  font-weight: 700;
-  letter-spacing: var(--ls-h2);
-  margin-bottom: var(--space-2);
+/* ==========================================================================
+   Documents
+   ========================================================================== */
+
+/* 3 cartes par ligne : avec 5 documents, on a 3 + 2 (au lieu de 4 + 1 carte seule) */
+.document-grille {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--grid-gutter);
+  margin-bottom: var(--space-5);
 }
 
-main-description-documentation {
-  color:rgba(75, 85, 99, 1);
+.document {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  transition:
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+/* Meme survol que les cartes de l'accueil */
+.document:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+/* Type de fichier (PDF, PNG) en violet */
+.document-type {
+  font-size: var(--fs-label);
+  line-height: 1.2;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+/* h2 dans le HTML (titre de chaque document) : on remplace la grande taille
+   des h2 de global.css par une taille de titre de carte */
+.document-nom {
   font-size: var(--fs-body);
-  font-weight: 400;
-  line-height: var(--lh-body);
-  color: var(--color-ink);
-} */
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.document-description {
+  font-size: var(--fs-label);
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* Lien texte "Ouvrir →".
+   margin-top: auto le pousse en bas de la carte : les liens restent alignes
+   meme si les descriptions n'ont pas la meme longueur.
+   align-self: flex-start evite que le lien prenne toute la largeur de la carte. */
+.document-lien {
+  margin-top: auto;
+  padding-top: var(--space-1);
+  align-self: flex-start;
+  font-size: var(--fs-label);
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.document-lien:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   Outils
+   ========================================================================== */
+
+/* Bloc lavande qui regroupe les outils */
+.outils {
+  background-color: var(--color-lavender);
+  border-radius: var(--radius-card);
+  padding: var(--space-4);
+}
+
+.outils-titre {
+  font-size: var(--fs-body);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.3;
+  margin: 0 0 var(--space-3);
+}
+
+/* Plus d'espace entre les etiquettes que sur l'accueil, comme sur la maquette */
+.outils .etiquette-liste {
+  gap: var(--space-5);
+}
+
+/* Etiquettes blanches pour ressortir sur le fond lavande */
+.outils .etiquette {
+  background-color: var(--color-white);
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .document-grille {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .document-grille {
+    grid-template-columns: 1fr;
+  }
+
+  .main-content-header br {
+    display: none;
+  }
+
+  .outils .etiquette-liste {
+    gap: var(--space-2);
+  }
+}

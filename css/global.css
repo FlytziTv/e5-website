@@ -279,6 +279,30 @@ p,
   background-color: var(--color-lavender);
 }
 
+/* Petit bouton, pour les cartes (accueil, documentation) */
+.btn--petit {
+  min-height: 24px;
+  padding: 0 10px;
+  font-size: var(--fs-small);
+  font-weight: 500;
+}
+
+/* Dans une carte, le petit bouton secondaire est blanc avec un texte fonce */
+.btn--petit.btn--secondary {
+  background-color: var(--color-white);
+  color: var(--color-ink);
+}
+
+.btn--petit.btn--secondary:hover {
+  background-color: var(--color-lavender);
+}
+
+/* Contour visible quand on navigue au clavier (touche Tab) */
+.btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
 /* Inactif */
 .btn--disabled,
 .btn:disabled {
@@ -340,6 +364,37 @@ textarea:focus {
   background-color: var(--color-primary);
   border-color: var(--color-primary);
   color: var(--color-white);
+}
+
+/* Etiquettes : langages de l'accueil, outils de la documentation */
+.etiquette-liste {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.etiquette {
+  font-family: var(--font-family-secondary);
+  font-size: var(--fs-small);
+  line-height: 1.5;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-lavender);
+  color: var(--color-ink);
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* Survol leger : meme surelevation que les listes, avec une ombre discrete */
+.etiquette:hover {
+  background-color: #e4dcf7;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(20, 18, 31, 0.08);
 }
 
 /* Badges et états */
@@ -423,4 +478,13 @@ textarea:focus {
 .block {
   border-radius: var(--radius-block);
   padding: var(--space-5);
+}
+
+/* Sur mobile, les petits boutons grandissent pour rester faciles a toucher */
+@media (max-width: 768px) {
+  .btn--petit {
+    min-height: 44px;
+    padding: 0 var(--space-4);
+    font-size: var(--fs-label);
+  }
 }

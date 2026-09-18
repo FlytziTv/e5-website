@@ -130,6 +130,22 @@ body {
   }
 }
 
+/* Sections de contenu sous l'en-tete (accueil, documentation) */
+.section-contenu {
+  margin-bottom: 64px;
+}
+
+.section-contenu:last-child {
+  margin-bottom: 0;
+}
+
+.section-titre {
+  font-size: var(--fs-body);
+  font-weight: 700;
+  letter-spacing: var(--ls-h3);
+  margin: 0 0 var(--space-3);
+}
+
 /* ==========================================================================
   Footer
   ========================================================================== */
@@ -206,5 +222,11 @@ body {
 
   .footerBrand {
     display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-contenu {
+    margin-bottom: var(--space-6);
   }
 }
