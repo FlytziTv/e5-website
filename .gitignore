@@ -13,7 +13,8 @@ desktop.ini
 node_modules/
 
 # Le dossier documents/ reste hors du depot (brouillons, comptes rendus),
-# SAUF les CV, qui doivent etre publies pour que les boutons
-# « Voir le CV » de la page d'accueil fonctionnent sur le site en ligne.
+# SAUF les CV et les livrables, qui doivent etre publies pour que les boutons
+# « Voir le CV » (accueil) et « Ouvrir » (documentation) fonctionnent en ligne.
 documents/*
 !documents/cv-*.pdf
+!documents/Documentation/
