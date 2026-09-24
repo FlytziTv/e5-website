@@ -143,7 +143,23 @@
   font-weight: 600;
   border-radius: var(--radius-card);
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition:
+    filter 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+}
+
+/* Survol : le bouton s'éclaircit et se soulève légèrement */
+.exo-code-button:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+}
+
+/* Clic : le bouton s'enfonce un court instant */
+.exo-code-button:active {
+  transform: scale(0.95);
+  box-shadow: none;
 }
 
 .exo-line {
@@ -196,6 +212,8 @@
   flex-direction: column;
   gap: var(--space-2);
   margin-top: var(--space-4);
+  /* Retire le retrait par défaut des <ul> : les bandes s'alignent sur le titre et les cartes */
+  padding: 0;
   font-family: var(--font-family);
   font-size: var(--fs-label);
 }
