@@ -97,7 +97,10 @@
 #cours-4:checked ~ .cours-liste label[for="cours-4"],
 #cours-5:checked ~ .cours-liste label[for="cours-5"],
 #cours-6:checked ~ .cours-liste label[for="cours-6"],
-#cours-7:checked ~ .cours-liste label[for="cours-7"] {
+#cours-7:checked ~ .cours-liste label[for="cours-7"],
+#cours-8:checked ~ .cours-liste label[for="cours-8"],
+#cours-9:checked ~ .cours-liste label[for="cours-9"],
+#cours-10:checked ~ .cours-liste label[for="cours-10"] {
   background-color: var(--color-lavender);
   border-color: var(--color-primary);
 }
@@ -109,7 +112,10 @@
 #cours-4:checked ~ .cours-liste label[for="cours-4"] .cours-numero,
 #cours-5:checked ~ .cours-liste label[for="cours-5"] .cours-numero,
 #cours-6:checked ~ .cours-liste label[for="cours-6"] .cours-numero,
-#cours-7:checked ~ .cours-liste label[for="cours-7"] .cours-numero {
+#cours-7:checked ~ .cours-liste label[for="cours-7"] .cours-numero,
+#cours-8:checked ~ .cours-liste label[for="cours-8"] .cours-numero,
+#cours-9:checked ~ .cours-liste label[for="cours-9"] .cours-numero,
+#cours-10:checked ~ .cours-liste label[for="cours-10"] .cours-numero {
   background-color: var(--color-primary);
   color: var(--color-white);
 }
@@ -121,7 +127,10 @@
 #cours-4:checked ~ .cours-liste label[for="cours-4"] .cours-etat,
 #cours-5:checked ~ .cours-liste label[for="cours-5"] .cours-etat,
 #cours-6:checked ~ .cours-liste label[for="cours-6"] .cours-etat,
-#cours-7:checked ~ .cours-liste label[for="cours-7"] .cours-etat {
+#cours-7:checked ~ .cours-liste label[for="cours-7"] .cours-etat,
+#cours-8:checked ~ .cours-liste label[for="cours-8"] .cours-etat,
+#cours-9:checked ~ .cours-liste label[for="cours-9"] .cours-etat,
+#cours-10:checked ~ .cours-liste label[for="cours-10"] .cours-etat {
   display: inline;
 }
 
@@ -131,7 +140,10 @@
 #cours-4:focus-visible ~ .cours-liste label[for="cours-4"],
 #cours-5:focus-visible ~ .cours-liste label[for="cours-5"],
 #cours-6:focus-visible ~ .cours-liste label[for="cours-6"],
-#cours-7:focus-visible ~ .cours-liste label[for="cours-7"] {
+#cours-7:focus-visible ~ .cours-liste label[for="cours-7"],
+#cours-8:focus-visible ~ .cours-liste label[for="cours-8"],
+#cours-9:focus-visible ~ .cours-liste label[for="cours-9"],
+#cours-10:focus-visible ~ .cours-liste label[for="cours-10"] {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
@@ -147,7 +159,10 @@
 #cours-4:checked ~ .cours-panneaux #panneau-4,
 #cours-5:checked ~ .cours-panneaux #panneau-5,
 #cours-6:checked ~ .cours-panneaux #panneau-6,
-#cours-7:checked ~ .cours-panneaux #panneau-7 {
+#cours-7:checked ~ .cours-panneaux #panneau-7,
+#cours-8:checked ~ .cours-panneaux #panneau-8,
+#cours-9:checked ~ .cours-panneaux #panneau-9,
+#cours-10:checked ~ .cours-panneaux #panneau-10 {
   display: block;
   animation: apparition 0.3s ease;
 }

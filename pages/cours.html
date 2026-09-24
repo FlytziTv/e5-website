@@ -90,7 +90,7 @@
         </header>
 
         <!-- Depliage des apercus SANS JavaScript (technique checkbox CSS).
-             1. Les 7 boutons radio ci-dessous sont invisibles mais presents ;
+             1. Les 10 boutons radio ci-dessous sont invisibles mais presents ;
                 ils partagent le meme name, donc un seul est coche a la fois.
              2. Chaque ligne de la liste est un <label> : cliquer dessus
                 coche le radio correspondant.
@@ -99,13 +99,16 @@
              Les < > & des blocs de code sont echappes en &lt; &gt; &amp;,
              sinon le navigateur les executerait au lieu de les afficher. -->
         <section class="cours-module">
-          <input class="cours-radio" type="radio" name="cours" id="cours-1" />
+          <input class="cours-radio" type="radio" name="cours" id="cours-1" checked />
           <input class="cours-radio" type="radio" name="cours" id="cours-2" />
           <input class="cours-radio" type="radio" name="cours" id="cours-3" />
-          <input class="cours-radio" type="radio" name="cours" id="cours-4" checked />
+          <input class="cours-radio" type="radio" name="cours" id="cours-4" />
           <input class="cours-radio" type="radio" name="cours" id="cours-5" />
           <input class="cours-radio" type="radio" name="cours" id="cours-6" />
           <input class="cours-radio" type="radio" name="cours" id="cours-7" />
+          <input class="cours-radio" type="radio" name="cours" id="cours-8" />
+          <input class="cours-radio" type="radio" name="cours" id="cours-9" />
+          <input class="cours-radio" type="radio" name="cours" id="cours-10" />
 
           <ul class="cours-liste">
             <li>
@@ -159,6 +162,30 @@
             <li>
               <label class="cours-ligne" for="cours-7">
                 <span class="cours-numero">7</span>
+                <span class="cours-titre">Les tableaux</span>
+                <span class="cours-etat">En cours</span>
+              </label>
+            </li>
+
+            <li>
+              <label class="cours-ligne" for="cours-8">
+                <span class="cours-numero">8</span>
+                <span class="cours-titre">Procédures et fonctions</span>
+                <span class="cours-etat">En cours</span>
+              </label>
+            </li>
+
+            <li>
+              <label class="cours-ligne" for="cours-9">
+                <span class="cours-numero">9</span>
+                <span class="cours-titre">Les fichiers</span>
+                <span class="cours-etat">En cours</span>
+              </label>
+            </li>
+
+            <li>
+              <label class="cours-ligne" for="cours-10">
+                <span class="cours-numero">10</span>
                 <span class="cours-titre">Récapitulatif des syntaxes</span>
                 <span class="cours-etat">En cours</span>
               </label>
@@ -335,10 +362,100 @@ console.log(resultats.join(", "));</code></pre>
             </article>
 
             <article class="cours-panneau" id="panneau-7">
-              <h2 class="cours-panneau-titre">7 — Récapitulatif des syntaxes · aperçu</h2>
+              <h2 class="cours-panneau-titre">7 — Les tableaux · aperçu</h2>
 
               <div class="cours-panneau-corps">
-                <p>Les quatre langages partagent la même logique — séquence, condition, répétition — et ne diffèrent que par l'habillage. Maîtriser l'algorithme, c'est n'avoir plus qu'un tableau de correspondances à apprendre. Conventions valables partout : indentation par bloc, noms explicites, commentaires utiles, point-virgule en fin d'instruction.</p>
+                <p>Un tableau regroupe sous un seul nom plusieurs valeurs de même type, repérées par un <strong>indice</strong>. Piège majeur : en algorithmique on compte souvent de 1 à n, mais dans les quatre langages l'indice commence à <strong>0</strong> — un tableau de 10 cases va de <code>tab[0]</code> à <code>tab[9]</code>, d'où <code>i &lt; 10</code> et jamais <code>i &lt;= 10</code>. <strong>C et Java</strong> : taille fixe, déclarée une fois pour toutes. <strong>JS et PHP</strong> : tableaux dynamiques qui grandissent à la demande, taille obtenue par <code>.length</code> ou <code>count()</code>. On parcourt un tableau avec une boucle <code>for</code>, et pour chercher un minimum ou un maximum on part de la <strong>première case</strong>, jamais de 0.</p>
+
+                <div class="cours-codes">
+<pre class="cours-code"><code class="language-c">// C — taille fixe             // Java — taille fixe
+float tab[10];                 double[] tab = new double[10];
+tab[0] = 12.5;                 tab[0] = 12.5;
+                               tab.length      // → 10
+
+// Parcours : de 0 à taille - 1
+for (i = 0; i &lt; 10; i++) { }</code></pre>
+<pre class="cours-code"><code class="language-php">// JS                          // PHP
+let tab = [12.5, 8, 20];       $tab = [12.5, 8, 20];
+tab.push(15);                  $tab[] = 15;
+tab.length    // → 4           count($tab)     // → 4
+
+// Saisie groupée "12;8;20" → tableau de nombres
+let t = saisie.split(";").map(Number);
+$t = array_map("floatval", explode(";", $saisie));</code></pre>
+                </div>
+              </div>
+            </article>
+
+            <article class="cours-panneau" id="panneau-8">
+              <h2 class="cours-panneau-titre">8 — Procédures et fonctions · aperçu</h2>
+
+              <div class="cours-panneau-corps">
+                <p>Découper un programme en sous-programmes nommés, c'est l'écrire une fois et l'appeler autant de fois qu'il faut. Une <strong>procédure</strong> exécute des actions et ne renvoie rien (<code>void</code> en C et Java). Une <strong>fonction</strong> calcule une valeur et la renvoie avec <code>return</code> ; l'appelant décide quoi en faire. Les <strong>paramètres</strong> transmettent les données : le paramètre formel (<code>nb</code>, dans la définition) reçoit une copie du paramètre effectif (<code>unNb</code>, à l'appel). En C, le sous-programme doit être écrit <strong>avant</strong> <code>main()</code> ; en Java, c'est une méthode <code>static</code> de la classe.</p>
+
+                <div class="cours-codes">
+<pre class="cours-code"><code class="language-c">// C — procédure : void, pas de return
+void mesDiviseurs(int nb) { /* affiche */ }
+
+// C — fonction : type de retour + return
+int estPair(int n) { return n % 2 == 0; }
+
+// Java — méthodes static dans la classe
+static void mesDiviseurs(int nb) { }
+static boolean estPair(int n) { return n % 2 == 0; }</code></pre>
+<pre class="cours-code"><code class="language-javascript">// JS — function, sans type
+function estPair(n) { return n % 2 == 0; }
+
+// PHP — function, paramètres en $
+function estPair($n) { return $n % 2 == 0; }
+
+// Appel : l'effectif est copié dans le formel
+mesDiviseurs(unNb);         // unNb → nb
+if (estPair(x)) { }         // la valeur renvoyée sert ici</code></pre>
+                </div>
+              </div>
+            </article>
+
+            <article class="cours-panneau" id="panneau-9">
+              <h2 class="cours-panneau-titre">9 — Les fichiers · aperçu</h2>
+
+              <div class="cours-panneau-corps">
+                <p>Un fichier conserve les données après la fin du programme. Toujours trois temps : <strong>ouvrir</strong> (<code>"r"</code> lecture, <code>"w"</code> écriture qui écrase, <code>"a"</code> ajout en fin), <strong>traiter</strong>, <strong>fermer</strong>. Toujours vérifier que l'ouverture a réussi : un fichier absent renvoie <code>NULL</code> en C, <code>false</code> en PHP, une exception en Java. On lit caractère par caractère jusqu'à la <strong>fin du fichier</strong> (EOF). Piège C : <code>while (!feof(fs))</code> détecte la fin <em>après</em> une lecture ratée et recopie un caractère parasite — on teste plutôt ce que renvoie <code>fgetc</code>, stocké dans un <code>int</code>. <strong>JS</strong> dans le navigateur n'a pas accès au disque (sécurité) : il faut Node.js. <strong>PHP</strong> lit et écrit les fichiers du serveur.</p>
+
+                <div class="cours-codes">
+<pre class="cours-code"><code class="language-c">// C — ouvrir / traiter / fermer
+FILE *fs = fopen("source.txt", "r");
+if (fs == NULL) { /* introuvable */ }
+int car;                            // int : pour recevoir EOF
+while ((car = fgetc(fs)) != EOF) {
+    putchar(car);
+}
+fclose(fs);
+
+// Java — read() renvoie -1 en fin de fichier
+try (FileReader fs = new FileReader("source.txt")) {
+    int car;
+    while ((car = fs.read()) != -1) { }
+}                                   // fermé automatiquement</code></pre>
+<pre class="cours-code"><code class="language-php">// PHP — mêmes étapes, côté serveur
+$fs = fopen("source.txt", "r");
+while (($car = fgetc($fs)) !== false) {
+    echo $car;
+}
+fclose($fs);
+
+// JS — Node.js uniquement
+const fs = require("fs");
+let contenu = fs.readFileSync("source.txt", "utf8");</code></pre>
+                </div>
+              </div>
+            </article>
+
+            <article class="cours-panneau" id="panneau-10">
+              <h2 class="cours-panneau-titre">10 — Récapitulatif des syntaxes · aperçu</h2>
+
+              <div class="cours-panneau-corps">
+                <p>Les quatre langages partagent la même logique — séquence, condition, répétition, découpage — et ne diffèrent que par l'habillage. Maîtriser l'algorithme, c'est n'avoir plus qu'un tableau de correspondances à apprendre. Conventions valables partout : indentation par bloc, noms explicites, commentaires utiles, point-virgule en fin d'instruction.</p>
 
                 <div class="cours-codes">
 <pre class="cours-code"><code class="language-plaintext">             Déclarer   Lire                Afficher
@@ -347,9 +464,19 @@ Java         int nb;    sc.nextInt()        System.out.println(nb)
 JavaScript   let nb;    prompt("...")       console.log(nb)
 PHP          $nb        $_POST["nb"]        echo $nb;
 
+             Tableau                  Taille      Fonction
+C            float t[10];             fixe        int f(int n) { }
+Java         double[] t = new ...     t.length    static int f(int n) { }
+JavaScript   let t = [];              t.length    function f(n) { }
+PHP          $t = [];                 count($t)   function f($n) { }
+
 Conversion   C: %d / %f   Java: Integer.parseInt()
              JS: parseInt()   PHP: intval()
 Concaténer   Java et JS: "a" + b   PHP: "a" . $b
+Indices      algo: 1 à n   code: 0 à n-1
+Fichiers     C: fopen / fgetc / fputc / fclose
+             Java: FileReader / FileWriter   PHP: fopen / fwrite
+             JS: Node.js uniquement (module fs)
 Exécution    C: natif   Java: JVM   JS: client   PHP: serveur</code></pre>
 <pre class="cours-code"><code class="language-plaintext">Le tronc commun :
 
@@ -357,6 +484,9 @@ Exécution    C: natif   Java: JVM   JS: client   PHP: serveur</code></pre>
   E / S      →  lire et afficher
   condition  →  choisir
   boucle     →  répéter
+  tableau    →  regrouper
+  fonction   →  découper et réutiliser
+  fichier    →  conserver
 
 Tout le reste n'est que syntaxe.</code></pre>
                 </div>
