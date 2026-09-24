@@ -314,6 +314,421 @@ const exercices = {
       `,
     },
   },
+  4: {
+    numero: "04",
+    nom: "Procédure mesDiviseurs",
+    enonce:
+      "Reprendre l'exercice des diviseurs en isolant le traitement dans une procédure <code>mesDiviseurs(nb)</code> qui affiche chaque diviseur du nombre reçu. Le programme principal se contente de lire un entier et d'appeler la procédure. À l'appel, le paramètre effectif <code>unNb</code> est copié dans le paramètre formel <code>nb</code>.",
+    attendu: `
+      1 est un diviseur de 6
+      2 est un diviseur de 6
+      3 est un diviseur de 6
+      6 est un diviseur de 6
+    `,
+    codes: {
+      Algo: `
+        PROCÉDURE mesDiviseurs(nb : ENTIER)
+        VARIABLES
+            div : ENTIER
+        DÉBUT
+            POUR div DE 1 À nb FAIRE
+                SI nb MOD div = 0 ALORS
+                    AFFICHER div, " est un diviseur de ", nb
+                FIN SI
+            FIN POUR
+        FIN
+
+        ALGORITHME ProcDiviseurs
+        VARIABLES
+            unNb : ENTIER
+        DÉBUT
+            LIRE unNb
+            mesDiviseurs(unNb)
+        FIN
+      `,
+      C: `
+        #include <stdio.h>
+
+        void mesDiviseurs(int nb) {
+            int div;
+
+            for (div = 1; div <= nb; div++) {
+                if (nb % div == 0) {
+                    printf("%d est un diviseur de %d\\n", div, nb);
+                }
+            }
+        }
+
+        int main() {
+            int unNb;
+
+            printf("Donner un nombre entier : ");
+            scanf("%d", &unNb);
+
+            mesDiviseurs(unNb);    // appel de la procédure
+            return 0;
+        }
+      `,
+      Java: `
+        import java.util.Scanner;
+
+        public class ProcDiviseurs {
+            static void mesDiviseurs(int nb) {
+                for (int div = 1; div <= nb; div++) {
+                    if (nb % div == 0) {
+                        System.out.println(div + " est un diviseur de " + nb);
+                    }
+                }
+            }
+
+            public static void main(String[] args) {
+                Scanner sc = new Scanner(System.in);
+
+                System.out.print("Donnez un nombre entier : ");
+                int unNb = sc.nextInt();
+
+                mesDiviseurs(unNb);    // appel de la procédure
+            }
+        }
+      `,
+      JavaScript: `
+        function mesDiviseurs(nb) {
+          for (let div = 1; div <= nb; div++) {
+            if (nb % div == 0) {
+              document.write(div + " est un diviseur de " + nb + "<br>");
+            }
+          }
+        }
+
+        let unNb = parseInt(prompt("Saisir un nombre entier :"));
+        mesDiviseurs(unNb);
+      `,
+      PHP: `
+        <form method="POST">
+            Nombre : <input type="text" name="nb"><br>
+            <input type="submit" name="Afficher" value="Afficher les diviseurs">
+        </form>
+
+        <?php
+        function mesDiviseurs($nb) {
+            for ($div = 1; $div <= $nb; $div++) {
+                if ($nb % $div == 0) {
+                    echo $div . " est un diviseur de " . $nb . "<br>";
+                }
+            }
+        }
+
+        if (isset($_POST["Afficher"])) {
+            $unNb = intval($_POST["nb"]);
+            mesDiviseurs($unNb);
+        }
+        ?>
+      `,
+    },
+  },
+  5: {
+    numero: "05",
+    nom: "Prix minimum, maximum et moyen",
+    enonce:
+      "Saisir 10 prix dans un tableau, puis le parcourir une seule fois pour trouver le prix le plus bas, le plus haut et la moyenne. <code>min</code> et <code>max</code> partent de la première case (partir de 0 fausserait le minimum) ; la moyenne est la somme divisée par le nombre de prix. En JS et PHP, les prix sont saisis sur une seule ligne, séparés par <code>;</code>.",
+    attendu: `
+      Le prix minimum est de : 5
+      Le prix maximum est de : 30
+      Le prix moyen est de : 15
+    `,
+    codes: {
+      Algo: `
+        ALGORITHME Tableau
+        VARIABLES
+            tab : TABLEAU[1..10] DE RÉEL
+            min, max, moyen : RÉEL
+            i : ENTIER
+        DÉBUT
+            POUR i DE 1 À 10 FAIRE
+                LIRE tab[i]
+            FIN POUR
+            min ← tab[1]
+            max ← tab[1]
+            moyen ← 0
+            POUR i DE 1 À 10 FAIRE
+                SI tab[i] < min ALORS
+                    min ← tab[i]
+                FIN SI
+                SI tab[i] > max ALORS
+                    max ← tab[i]
+                FIN SI
+                moyen ← moyen + tab[i]
+            FIN POUR
+            moyen ← moyen / 10
+            AFFICHER "Le prix minimum est de : ", min
+            AFFICHER "Le prix maximum est de : ", max
+            AFFICHER "Le prix moyen est de : ", moyen
+        FIN
+      `,
+      C: `
+        #include <stdio.h>
+
+        int main() {
+            float tab[10];
+            float min, max, moyen;
+            int i;
+
+            for (i = 0; i < 10; i++) {        // indices 0 à 9
+                printf("Saisir un prix : ");
+                scanf("%f", &tab[i]);
+            }
+
+            min = tab[0];
+            max = tab[0];
+            moyen = 0;
+
+            for (i = 0; i < 10; i++) {
+                if (tab[i] < min) {
+                    min = tab[i];
+                }
+                if (tab[i] > max) {
+                    max = tab[i];
+                }
+                moyen += tab[i];
+            }
+            moyen /= 10;
+
+            printf("Le prix minimum est de : %.2f\\n", min);
+            printf("Le prix maximum est de : %.2f\\n", max);
+            printf("Le prix moyen est de : %.2f\\n", moyen);
+            return 0;
+        }
+      `,
+      Java: `
+        import java.util.Scanner;
+
+        public class Tableau {
+            public static void main(String[] args) {
+                Scanner sc = new Scanner(System.in);
+                double[] tab = new double[10];
+
+                for (int i = 0; i < tab.length; i++) {
+                    System.out.print("Saisir un prix : ");
+                    tab[i] = sc.nextDouble();
+                }
+
+                double min = tab[0];
+                double max = tab[0];
+                double moyen = 0;
+
+                for (int i = 0; i < tab.length; i++) {
+                    if (tab[i] < min) {
+                        min = tab[i];
+                    }
+                    if (tab[i] > max) {
+                        max = tab[i];
+                    }
+                    moyen += tab[i];
+                }
+                moyen /= tab.length;
+
+                System.out.println("Le prix minimum est de : " + min);
+                System.out.println("Le prix maximum est de : " + max);
+                System.out.println("Le prix moyen est de : " + moyen);
+            }
+        }
+      `,
+      JavaScript: `
+        let saisie = prompt("Saisir les prix séparés par ; :");
+        let tab = saisie.split(";").map(Number);    // "12;8" → [12, 8]
+
+        let min = tab[0];
+        let max = tab[0];
+        let moyen = 0;
+
+        for (let i = 0; i < tab.length; i++) {
+          if (tab[i] < min) {
+            min = tab[i];
+          }
+          if (tab[i] > max) {
+            max = tab[i];
+          }
+          moyen += tab[i];
+        }
+        moyen /= tab.length;
+
+        document.write("Le prix minimum est de : " + min + "<br>");
+        document.write("Le prix maximum est de : " + max + "<br>");
+        document.write("Le prix moyen est de : " + moyen);
+      `,
+      PHP: `
+        <form method="POST">
+            Prix séparés par ; : <input type="text" name="tab"><br>
+            <input type="submit" name="Calculer" value="Calculer">
+        </form>
+
+        <?php
+        if (isset($_POST["Calculer"])) {
+            $tab = array_map("floatval", explode(";", $_POST["tab"]));
+            $n = count($tab);
+
+            $min = $tab[0];
+            $max = $tab[0];
+            $moyen = 0;
+
+            for ($i = 0; $i < $n; $i++) {
+                if ($tab[$i] < $min) {
+                    $min = $tab[$i];
+                }
+                if ($tab[$i] > $max) {
+                    $max = $tab[$i];
+                }
+                $moyen += $tab[$i];
+            }
+            $moyen /= $n;
+
+            printf("Le prix minimum est de : %.2f <br>", $min);
+            printf("Le prix maximum est de : %.2f <br>", $max);
+            printf("Le prix moyen est de : %.2f", $moyen);
+        }
+        ?>
+      `,
+    },
+  },
+  6: {
+    numero: "06",
+    nom: "Copier-coller un fichier",
+    enonce:
+      "Lire le nom d'un fichier source et celui d'un fichier destination, puis recopier le contenu de la source dans la destination, caractère par caractère, jusqu'à la fin du fichier. Ouvrir la source en lecture, la destination en écriture, et fermer les deux à la fin. Si la source est introuvable, le signaler et ne rien faire d'autre.",
+    attendu: `
+      Opération copier-coller terminée
+    `,
+    codes: {
+      Algo: `
+        ALGORITHME CopierColler
+        VARIABLES
+            fs, fd : FICHIER
+            nomS, nomD : CHAÎNE
+            car : CARACTÈRE
+        DÉBUT
+            LIRE nomS
+            LIRE nomD
+            fs ← OUVRIR(nomS, "lecture")
+            SI fs = NUL ALORS
+                AFFICHER "Fichier source introuvable"
+            SINON
+                fd ← OUVRIR(nomD, "écriture")
+                TANT QUE NON FIN_FICHIER(fs) FAIRE
+                    LIRE(fs, car)
+                    ÉCRIRE(fd, car)
+                FIN TANT QUE
+                FERMER(fs)
+                FERMER(fd)
+                AFFICHER "Opération copier-coller terminée"
+            FIN SI
+        FIN
+      `,
+      C: `
+        #include <stdio.h>
+
+        int main() {
+            FILE *fs, *fd;
+            char nomS[30], nomD[30];
+            int car;                          // int : doit pouvoir recevoir EOF
+
+            printf("Nom du fichier source : ");
+            scanf("%s", nomS);                // pas de & : une chaîne est déjà une adresse
+            printf("Nom du fichier destination : ");
+            scanf("%s", nomD);
+
+            fs = fopen(nomS, "r");
+            if (fs == NULL) {
+                printf("Fichier source introuvable\\n");
+                return 1;
+            }
+            fd = fopen(nomD, "w");
+
+            while ((car = fgetc(fs)) != EOF) {
+                fputc(car, fd);
+            }
+
+            fclose(fs);
+            fclose(fd);
+            printf("Operation copier-coller terminee\\n");
+            return 0;
+        }
+      `,
+      Java: `
+        import java.io.FileReader;
+        import java.io.FileWriter;
+        import java.io.IOException;
+        import java.util.Scanner;
+
+        public class CopierColler {
+            public static void main(String[] args) {
+                Scanner sc = new Scanner(System.in);
+
+                System.out.print("Nom du fichier source : ");
+                String nomS = sc.nextLine();
+                System.out.print("Nom du fichier destination : ");
+                String nomD = sc.nextLine();
+
+                // try (...) ferme les deux fichiers automatiquement
+                try (FileReader fs = new FileReader(nomS);
+                     FileWriter fd = new FileWriter(nomD)) {
+                    int car;
+                    while ((car = fs.read()) != -1) {    // -1 = fin du fichier
+                        fd.write(car);
+                    }
+                    System.out.println("Opération copier-coller terminée");
+                } catch (IOException e) {
+                    System.out.println("Erreur de fichier : " + e.getMessage());
+                }
+            }
+        }
+      `,
+      JavaScript: `
+        // Le navigateur n'a pas accès au disque : ce script tourne avec Node.js
+        // Lancement : node copier.js cours.txt copie.txt
+        const fs = require("fs");
+
+        let nomS = process.argv[2];
+        let nomD = process.argv[3];
+
+        if (!fs.existsSync(nomS)) {
+          console.log("Fichier source introuvable");
+        } else {
+          let contenu = fs.readFileSync(nomS, "utf8");   // lit tout le fichier
+          fs.writeFileSync(nomD, contenu);                // crée ou écrase
+          console.log("Opération copier-coller terminée");
+        }
+      `,
+      PHP: `
+        <form method="POST">
+            Fichier source      : <input type="text" name="nomS"><br>
+            Fichier destination : <input type="text" name="nomD"><br>
+            <input type="submit" name="Copier" value="Copier">
+        </form>
+
+        <?php
+        if (isset($_POST["Copier"])) {
+            $nomS = basename($_POST["nomS"]);    // reste dans le dossier du script
+            $nomD = basename($_POST["nomD"]);
+
+            if (!file_exists($nomS)) {
+                echo "Fichier source introuvable";
+            } else {
+                $fs = fopen($nomS, "r");
+                $fd = fopen($nomD, "w");
+
+                while (($car = fgetc($fs)) !== false) {
+                    fwrite($fd, $car);
+                }
+
+                fclose($fs);
+                fclose($fd);
+                echo "Opération copier-coller terminée";
+            }
+        }
+        ?>
+      `,
+    },
+  },
 };
 
 // Nettoie un texte écrit entre backticks (template literal).
@@ -398,13 +813,14 @@ blocCode.textContent = nettoyerTexte(exerciceSelectionne.codes[language]);
 if (typeof hljs !== "undefined") {
   // highlight.js ne connaît pas notre pseudo-code : on lui décrit ses mots-clés
   hljs.registerLanguage("algo", () => ({
-    // $pattern : ce qui forme un mot. [A-Za-zÀ-ÿ] inclut les accents (DÉBUT, RÉEL)
+    // $pattern : ce qui forme un mot. [A-Za-zÀ-ÿ] inclut les accents (DÉBUT, RÉEL),
+    // le _ permet de reconnaître FIN_FICHIER comme un seul mot
     keywords: {
-      $pattern: /[A-Za-zÀ-ÿ]+/,
+      $pattern: /[A-Za-zÀ-ÿ_]+/,
       keyword:
-        "ALGORITHME VARIABLES DÉBUT FIN SI ALORS SINON POUR DE À FAIRE MOD",
-      built_in: "LIRE AFFICHER",
-      type: "ENTIER RÉEL",
+        "ALGORITHME PROCÉDURE VARIABLES DÉBUT FIN SI ALORS SINON POUR DE À FAIRE TANT QUE NON MOD NUL",
+      built_in: "LIRE AFFICHER OUVRIR FERMER ÉCRIRE FIN_FICHIER",
+      type: "ENTIER RÉEL TABLEAU FICHIER CHAÎNE CARACTÈRE",
     },
     // Modes tout prêts de highlight.js pour colorer les "textes" et les nombres
     contains: [hljs.QUOTE_STRING_MODE, hljs.NUMBER_MODE],
@@ -454,7 +870,7 @@ document.querySelectorAll(".language-button").forEach((bouton) => {
 // Pourquoi : ajouter un exercice dans les données suffit, pas besoin de toucher au HTML.
 const listeExercices = document.querySelector(".list-exercices");
 
-// for...in parcourt les clés d'un objet : ici "1", "2", "3"
+// for...in parcourt les clés d'un objet : ici "1", "2", "3"...
 for (const numero in exercices) {
   const exercice = exercices[numero];
   // Object.keys() donne la liste des clés de codes ; - 1 car l'algo n'est pas un langage
