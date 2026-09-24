@@ -21,12 +21,44 @@ body {
   justify-self: start;
 }
 
+/* Titre du site façon terminal : > e-enseignement▌ */
 .title-navbar {
+  font-family: var(--font-family-secondary);
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 500; /* IBM Plex Mono n'est chargée qu'en 400 et 500 */
   text-align: center;
-  color: var(--color-primary);
+  color: var(--color-ink);
   margin: 0;
+}
+
+/* Le ">" de l'invite de commande, en violet */
+.title-prompt {
+  color: var(--color-primary);
+}
+
+/* Curseur de saisie qui clignote après le titre */
+.title-curseur {
+  display: inline-block;
+  width: 0.5em;
+  height: 1.1em;
+  margin-left: 3px;
+  vertical-align: text-bottom;
+  background-color: var(--color-primary);
+  /* steps(1) : on/off net, sans fondu, comme un vrai terminal */
+  animation: clignote 1s steps(1) infinite;
+}
+
+@keyframes clignote {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Pas de clignotement si l'utilisateur a demandé moins d'animations */
+@media (prefers-reduced-motion: reduce) {
+  .title-curseur {
+    animation: none;
+  }
 }
 
 /* ==========================================================================
